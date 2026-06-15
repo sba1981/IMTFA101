@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: WealthAdvisors LLP | MOP-IFA — IMT Hyderabad</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .month-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .month-btn {
+      flex: 1; padding: 0.75rem; text-align: center;
+      background: var(--gray-200); border: none; border-radius: var(--radius);
+      font-size: 0.9rem; font-weight: 600; cursor: pointer;
+      color: var(--gray-700); transition: all 0.2s; max-width: 180px;
+    }
+    .month-btn.active { background: var(--maroon); color: #fff; }
+    .month-panel { display: none; }
+    .month-panel.active { display: block; }
+
+    .txn-full { display: grid; grid-template-columns: 80px 1fr; gap: 0.75rem; align-items: start; padding: 0.9rem 0; border-bottom: 1px solid var(--gray-200); }
+    .txn-full:last-child { border-bottom: none; }
+    .txn-date-badge { background: var(--maroon); color: #fff; border-radius: var(--radius); padding: 0.4rem 0.5rem; text-align: center; font-size: 0.7rem; font-weight: 700; line-height: 1.4; }
+    .txn-body strong { font-size: 0.9rem; color: var(--text); }
+    .txn-note { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.2rem; font-style: italic; }
+    .txn-acct { margin-top: 0.35rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .dr { background: #FEE2E2; color: #991B1B; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+    .cr { background: #DCFCE7; color: #166534; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+
+    .fs-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 680px) { .fs-wrapper { grid-template-columns: 1fr; } .month-btn { max-width: 100%; } }
+
+    .fs-card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; border: 1px solid var(--gray-200); }
+    .fs-card-header { background: var(--maroon); color: #fff; padding: 1rem 1.25rem; }
+    .fs-card-header h3 { font-size: 1rem; font-weight: 700; }
+    .fs-card-header p  { font-size: 0.78rem; opacity: 0.8; margin-top: 0.2rem; }
+    .fs-body { padding: 0; }
+    .fs-row { display: flex; justify-content: space-between; padding: 0.6rem 1.25rem; border-bottom: 1px solid var(--gray-100); font-size: 0.875rem; }
+    .fs-row:last-child { border-bottom: none; }
+    .fs-row.section-head { background: var(--gray-100); font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-700); }
+    .fs-row.subtotal { background: #FDF8EC; font-weight: 600; border-top: 2px solid var(--gold); }
+    .fs-row.total    { background: var(--maroon); color: #fff; font-weight: 700; border-top: 2px solid var(--maroon-dark); }
+    .fs-row .amount  { font-weight: 500; }
+    .fs-row .indent  { padding-left: 1rem; }
+    .neg { color: #DC2626; }
+    .pos { color: #16A34A; }
+  </style>
+</head>
+<body>
+
+  <div class="top-banner">Institute of Management Technology, Hyderabad &nbsp;·&nbsp; Management Orientation Program</div>
+
+  <header>
+    <div class="header-inner">
+      <a class="header-brand" href="index.html">
+        <div class="brand-logo">IMT</div>
+        <div class="brand-text">
+          <div class="course-code">MOP-IFA</div>
+          <div class="course-name">Introduction to Financial Accounting</div>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="framework.html">Framework</a>
+        <a href="accounting-equation.html">Accounting Equation</a>
+        <a href="case-study.html" class="active">Case Study</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Session 4 &nbsp;·&nbsp; Applied Case Study</div>
+      <h1>WealthAdvisors LLP</h1>
+      <p>A newly established investment advisory firm. Track real transactions, apply accounting principles, and build the Income Statement and Balance Sheet for May and June 2026.</p>
+    </div>
+  </section>
+  <div class="gold-line"></div>
+
+  <main>
+
+    <!-- Company Background -->
+    <section>
+      <h2 class="section-title">Company Background</h2>
+      <div class="content-block">
+        <div class="info-grid">
+          <div class="info-item"><div class="info-label">Firm</div><div class="info-value">WealthAdvisors LLP</div></div>
+          <div class="info-item"><div class="info-label">Founded by</div><div class="info-value">Jessica Thompson</div></div>
+          <div class="info-item"><div class="info-label">Incorporated</div><div class="info-value">May 1, 2026</div></div>
+          <div class="info-item"><div class="info-label">Services</div><div class="info-value">Financial Planning · Portfolio Management · Investment Advisory</div></div>
+        </div>
+        <div class="callout callout-gold mt-2">
+          <strong>📌 Accounting Basis</strong>
+          All transactions are recorded on the <em>accrual basis</em> in accordance with ICAI Framework. Revenue is recognised when earned; expenses when incurred — regardless of cash movement.
+        </div>
+      </div>
+    </section>
+
+    <!-- Transactions -->
+    <section>
+      <h2 class="section-title">Business Transactions</h2>
+
+      <div class="month-tabs">
+        <button class="month-btn active" onclick="switchMonth('may')">May 2026</button>
+        <button class="month-btn" onclick="switchMonth('jun')">June 2026</button>
+      </div>
+
+      <!-- MAY -->
+      <div id="panel-may" class="month-panel active">
+        <div class="content-block">
+          <h2>Transactions — May 2026</h2>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 1</div>
+            <div class="txn-body">
+              <strong>Jessica deposits ₹5,00,000 as capital contribution into bank account</strong>
+              <div class="txn-note">Initial equity injection to fund the business</div>
+              <div class="txn-acct"><span class="dr">Dr Bank ₹5,00,000</span><span class="cr">Cr Capital ₹5,00,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 2</div>
+            <div class="txn-body">
+              <strong>Registration &amp; legal fees — ₹10,000 paid in cash</strong>
+              <div class="txn-note">Incorporation expense — reduces equity immediately</div>
+              <div class="txn-acct"><span class="dr">Dr Legal Expense ₹10,000</span><span class="cr">Cr Bank ₹10,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 5</div>
+            <div class="txn-body">
+              <strong>Bank loan of ₹3,00,000 at 8% p.a.; interest payable monthly; principal repayable at any time</strong>
+              <div class="txn-note">Increases both assets (cash) and liabilities (loan)</div>
+              <div class="txn-acct"><span class="dr">Dr Bank ₹3,00,000</span><span class="cr">Cr Bank Loan ₹3,00,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 7</div>
+            <div class="txn-body">
+              <strong>12-month office lease: security deposit ₹1,00,000 paid; monthly rent ₹30,000 payable at month-end</strong>
+              <div class="txn-note">Deposit is an asset (refundable). Rent recognised at end of each month.</div>
+              <div class="txn-acct"><span class="dr">Dr Security Deposit ₹1,00,000</span><span class="cr">Cr Bank ₹1,00,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 10</div>
+            <div class="txn-body">
+              <strong>Office furniture purchased — ₹80,000 paid in full</strong>
+              <div class="txn-note">Asset swap: cash converts to fixed asset</div>
+              <div class="txn-acct"><span class="dr">Dr Furniture ₹80,000</span><span class="cr">Cr Bank ₹80,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 12</div>
+            <div class="txn-body">
+              <strong>Computer equipment purchased — ₹1,50,000 on credit (payable by end of June)</strong>
+              <div class="txn-note">Asset obtained now; liability to pay created</div>
+              <div class="txn-acct"><span class="dr">Dr Equipment ₹1,50,000</span><span class="cr">Cr Equipment Payable ₹1,50,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 15</div>
+            <div class="txn-body">
+              <strong>Office supplies purchased — ₹20,000 cash</strong>
+              <div class="txn-note">Recorded as asset initially; consumed portion expensed at month-end</div>
+              <div class="txn-acct"><span class="dr">Dr Office Supplies ₹20,000</span><span class="cr">Cr Bank ₹20,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 18</div>
+            <div class="txn-body">
+              <strong>Administrative assistant hired — salary ₹25,000/month, payable at month-end</strong>
+              <div class="txn-note">No journal entry yet — recognised when salary is earned (May 31)</div>
+              <div class="txn-acct"><span class="tag tag-gray" style="font-size:0.75rem;">Memo entry only</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 20</div>
+            <div class="txn-body">
+              <strong>Advisory services provided — ₹1,00,000 received in cash</strong>
+              <div class="txn-note">Revenue earned and received — increases equity</div>
+              <div class="txn-acct"><span class="dr">Dr Bank ₹1,00,000</span><span class="cr">Cr Service Revenue ₹1,00,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 22</div>
+            <div class="txn-body">
+              <strong>Rebecca Olsen pays ₹2,00,000 upfront for 4 advisory services over 1 year</strong>
+              <div class="txn-note">Cash received but service not rendered → Deferred Revenue (Liability) until each service is performed</div>
+              <div class="txn-acct"><span class="dr">Dr Bank ₹2,00,000</span><span class="cr">Cr Deferred Revenue ₹2,00,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 25</div>
+            <div class="txn-body">
+              <strong>Additional office supplies — ₹30,000 on credit (payable by end of June)</strong>
+              <div class="txn-acct"><span class="dr">Dr Office Supplies ₹30,000</span><span class="cr">Cr Supplies Payable ₹30,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 31</div>
+            <div class="txn-body">
+              <strong>Supplies consumed during May — ₹24,000</strong>
+              <div class="txn-note">Total supplies: ₹50,000; consumed: ₹24,000; remaining: ₹26,000</div>
+              <div class="txn-acct"><span class="dr">Dr Supplies Expense ₹24,000</span><span class="cr">Cr Office Supplies ₹24,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">May 31</div>
+            <div class="txn-body">
+              <strong>All payments honoured: Rent ₹30,000 + Utility bills ₹8,000</strong>
+              <div class="txn-note">Salary of ₹25,000 accrued but NOT paid — payable next month</div>
+              <div class="txn-acct">
+                <span class="dr">Dr Rent Expense ₹30,000</span><span class="cr">Cr Bank ₹38,000</span>
+                <span class="dr">Dr Utility Expense ₹8,000</span>
+                <span class="dr">Dr Salary Expense ₹25,000</span><span class="cr">Cr Salary Payable ₹25,000</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- JUNE -->
+      <div id="panel-jun" class="month-panel">
+        <div class="content-block">
+          <h2>Transactions — June 2026</h2>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">Jun 1</div>
+            <div class="txn-body">
+              <strong>Financial planning services rendered — ₹2,50,000 earned</strong>
+              <div class="txn-acct"><span class="dr">Dr Bank ₹2,50,000</span><span class="cr">Cr Service Revenue ₹2,50,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">Jun 10</div>
+            <div class="txn-body">
+              <strong>Order received for portfolio management services — ₹1,50,000</strong>
+              <div class="txn-note">Order received but service not yet performed — recognised when service is rendered</div>
+              <div class="txn-acct"><span class="tag tag-gray" style="font-size:0.75rem;">Memo entry — no accounting entry yet</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">Jun 15</div>
+            <div class="txn-body">
+              <strong>First advisory service provided to Rebecca Olsen (1 of 4 services)</strong>
+              <div class="txn-note">₹2,00,000 ÷ 4 = ₹50,000 per service. Deferred Revenue is now earned.</div>
+              <div class="txn-acct"><span class="dr">Dr Deferred Revenue ₹50,000</span><span class="cr">Cr Service Revenue ₹50,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">Jun 20</div>
+            <div class="txn-body">
+              <strong>Payment made for computer equipment purchased in May — ₹1,50,000</strong>
+              <div class="txn-note">Settles the liability created on May 12</div>
+              <div class="txn-acct"><span class="dr">Dr Equipment Payable ₹1,50,000</span><span class="cr">Cr Bank ₹1,50,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">Jun 25</div>
+            <div class="txn-body">
+              <strong>Monthly interest on bank loan — ₹2,000 paid (₹3,00,000 × 8% ÷ 12)</strong>
+              <div class="txn-acct"><span class="dr">Dr Interest Expense ₹2,000</span><span class="cr">Cr Bank ₹2,000</span></div>
+            </div>
+          </div>
+
+          <div class="txn-full">
+            <div class="txn-date-badge">Jun 30</div>
+            <div class="txn-body">
+              <strong>All June payments honoured: Rent ₹30,000, Utilities ₹12,000, Salary ₹50,000 (May + June arrears), Supplies Payable ₹30,000</strong>
+              <div class="txn-acct">
+                <span class="dr">Dr Rent Expense ₹30,000</span>
+                <span class="dr">Dr Utility Expense ₹12,000</span>
+                <span class="dr">Dr Salary Expense ₹25,000</span>
+                <span class="dr">Dr Salary Payable ₹25,000</span>
+                <span class="dr">Dr Supplies Payable ₹30,000</span>
+                <span class="cr">Cr Bank ₹1,22,000</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Financial Statements -->
+    <section>
+      <h2 class="section-title">Financial Statements</h2>
+      <p class="section-subtitle">Select a month to view the Income Statement and Balance Sheet</p>
+
+      <div class="month-tabs">
+        <button class="month-btn active" onclick="switchFS('may')">May 2026</button>
+        <button class="month-btn" onclick="switchFS('jun')">June 2026</button>
+      </div>
+
+      <!-- MAY FS -->
+      <div id="fs-may" class="month-panel active">
+        <div class="fs-wrapper">
+
+          <!-- Income Statement May -->
+          <div class="fs-card">
+            <div class="fs-card-header">
+              <h3>Income Statement</h3>
+              <p>WealthAdvisors LLP &nbsp;·&nbsp; Month ended 31 May 2026</p>
+            </div>
+            <div class="fs-body">
+              <div class="fs-row section-head"><span>Revenue</span><span></span></div>
+              <div class="fs-row"><span class="indent">Service Revenue</span><span class="amount">₹ 1,00,000</span></div>
+              <div class="fs-row subtotal"><span>Total Revenue</span><span>₹ 1,00,000</span></div>
+
+              <div class="fs-row section-head"><span>Expenses</span><span></span></div>
+              <div class="fs-row"><span class="indent">Legal &amp; Registration Fees</span><span class="amount neg">₹ 10,000</span></div>
+              <div class="fs-row"><span class="indent">Rent Expense</span><span class="amount neg">₹ 30,000</span></div>
+              <div class="fs-row"><span class="indent">Salary Expense</span><span class="amount neg">₹ 25,000</span></div>
+              <div class="fs-row"><span class="indent">Utility Expense</span><span class="amount neg">₹ 8,000</span></div>
+              <div class="fs-row"><span class="indent">Supplies Expense</span><span class="amount neg">₹ 24,000</span></div>
+              <div class="fs-row subtotal"><span>Total Expenses</span><span class="neg">₹ 97,000</span></div>
+
+              <div class="fs-row total"><span>Net Income (May)</span><span class="pos" style="color:#86efac;">₹ 3,000</span></div>
+            </div>
+          </div>
+
+          <!-- Balance Sheet May -->
+          <div class="fs-card">
+            <div class="fs-card-header">
+              <h3>Balance Sheet</h3>
+              <p>WealthAdvisors LLP &nbsp;·&nbsp; As at 31 May 2026</p>
+            </div>
+            <div class="fs-body">
+              <div class="fs-row section-head"><span>Assets</span><span></span></div>
+              <div class="fs-row"><span class="indent">Cash / Bank</span><span class="amount">₹ 3,72,000</span></div>
+              <div class="fs-row"><span class="indent">Security Deposit</span><span class="amount">₹ 1,00,000</span></div>
+              <div class="fs-row"><span class="indent">Office Furniture</span><span class="amount">₹ 80,000</span></div>
+              <div class="fs-row"><span class="indent">Computer Equipment</span><span class="amount">₹ 1,50,000</span></div>
+              <div class="fs-row"><span class="indent">Office Supplies</span><span class="amount">₹ 26,000</span></div>
+              <div class="fs-row subtotal"><span>Total Assets</span><span>₹ 7,28,000</span></div>
+
+              <div class="fs-row section-head"><span>Liabilities</span><span></span></div>
+              <div class="fs-row"><span class="indent">Bank Loan</span><span class="amount">₹ 3,00,000</span></div>
+              <div class="fs-row"><span class="indent">Equipment Payable</span><span class="amount">₹ 1,50,000</span></div>
+              <div class="fs-row"><span class="indent">Supplies Payable</span><span class="amount">₹ 30,000</span></div>
+              <div class="fs-row"><span class="indent">Salary Payable</span><span class="amount">₹ 25,000</span></div>
+              <div class="fs-row"><span class="indent">Deferred Revenue</span><span class="amount">₹ 1,50,000</span></div>
+              <div class="fs-row subtotal"><span>Total Liabilities</span><span>₹ 6,55,000</span></div>
+
+              <div class="fs-row section-head"><span>Equity</span><span></span></div>
+              <div class="fs-row"><span class="indent">Capital</span><span class="amount">₹ 5,00,000</span></div>
+              <div class="fs-row"><span class="indent">Retained Earnings (Net Income)</span><span class="amount">₹ 3,000</span></div>
+              <div class="fs-row"><span class="indent">Less: Advance used as Deferred Rev.</span><span class="amount neg">−₹ 30,000</span></div>
+              <div class="fs-row subtotal"><span>Total Equity</span><span>₹ 73,000</span></div>
+
+              <div class="fs-row total"><span>Total Liabilities + Equity</span><span>₹ 7,28,000</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="callout callout-gold mt-2">
+          <strong>🔍 Note on Deferred Revenue</strong>
+          Rebecca Olsen's ₹2,00,000 advance is for 4 services. Only the services rendered in May would be earned revenue. Since no service was rendered in May (the first service is performed on June 15), the full ₹2,00,000 remains as <em>Deferred Revenue</em> (liability) on the May Balance Sheet.
+        </div>
+      </div>
+
+      <!-- JUNE FS -->
+      <div id="fs-jun" class="month-panel">
+        <div class="fs-wrapper">
+
+          <!-- Income Statement June -->
+          <div class="fs-card">
+            <div class="fs-card-header">
+              <h3>Income Statement</h3>
+              <p>WealthAdvisors LLP &nbsp;·&nbsp; Month ended 30 June 2026</p>
+            </div>
+            <div class="fs-body">
+              <div class="fs-row section-head"><span>Revenue</span><span></span></div>
+              <div class="fs-row"><span class="indent">Financial Planning Services</span><span class="amount">₹ 2,50,000</span></div>
+              <div class="fs-row"><span class="indent">Rebecca Olsen — 1st Service</span><span class="amount">₹ 50,000</span></div>
+              <div class="fs-row subtotal"><span>Total Revenue</span><span>₹ 3,00,000</span></div>
+
+              <div class="fs-row section-head"><span>Expenses</span><span></span></div>
+              <div class="fs-row"><span class="indent">Rent Expense</span><span class="amount neg">₹ 30,000</span></div>
+              <div class="fs-row"><span class="indent">Salary Expense (June)</span><span class="amount neg">₹ 25,000</span></div>
+              <div class="fs-row"><span class="indent">Utility Expense</span><span class="amount neg">₹ 12,000</span></div>
+              <div class="fs-row"><span class="indent">Interest Expense</span><span class="amount neg">₹ 2,000</span></div>
+              <div class="fs-row subtotal"><span>Total Expenses</span><span class="neg">₹ 69,000</span></div>
+
+              <div class="fs-row total"><span>Net Income (June)</span><span style="color:#86efac;">₹ 2,31,000</span></div>
+            </div>
+          </div>
+
+          <!-- Balance Sheet June -->
+          <div class="fs-card">
+            <div class="fs-card-header">
+              <h3>Balance Sheet</h3>
+              <p>WealthAdvisors LLP &nbsp;·&nbsp; As at 30 June 2026</p>
+            </div>
+            <div class="fs-body">
+              <div class="fs-row section-head"><span>Assets</span><span></span></div>
+              <div class="fs-row"><span class="indent">Cash / Bank</span><span class="amount">₹ 5,20,000</span></div>
+              <div class="fs-row"><span class="indent">Security Deposit</span><span class="amount">₹ 1,00,000</span></div>
+              <div class="fs-row"><span class="indent">Office Furniture</span><span class="amount">₹ 80,000</span></div>
+              <div class="fs-row"><span class="indent">Computer Equipment</span><span class="amount">₹ 1,50,000</span></div>
+              <div class="fs-row"><span class="indent">Office Supplies (remaining)</span><span class="amount">₹ 26,000</span></div>
+              <div class="fs-row subtotal"><span>Total Assets</span><span>₹ 8,76,000</span></div>
+
+              <div class="fs-row section-head"><span>Liabilities</span><span></span></div>
+              <div class="fs-row"><span class="indent">Bank Loan</span><span class="amount">₹ 3,00,000</span></div>
+              <div class="fs-row"><span class="indent">Deferred Revenue (3 services remaining)</span><span class="amount">₹ 1,50,000</span></div>
+              <div class="fs-row subtotal"><span>Total Liabilities</span><span>₹ 4,50,000</span></div>
+
+              <div class="fs-row section-head"><span>Equity</span><span></span></div>
+              <div class="fs-row"><span class="indent">Capital</span><span class="amount">₹ 5,00,000</span></div>
+              <div class="fs-row"><span class="indent">Retained Earnings (May)</span><span class="amount">₹ 3,000</span></div>
+              <div class="fs-row"><span class="indent">Net Income (June)</span><span class="amount">₹ 2,31,000</span></div>
+              <div class="fs-row subtotal"><span>Total Equity</span><span>₹ 7,34,000</span></div>
+
+              <div class="fs-row total"><span>Total Liabilities + Equity</span><span>₹ 11,84,000</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="callout callout-blue mt-2">
+          <strong>📌 Bank Balance — June Calculation</strong>
+          Opening bank (May end): ₹3,72,000 + Revenue received ₹2,50,000 − Equipment payable paid ₹1,50,000 − Interest ₹2,000 − Rent ₹30,000 − Utilities ₹12,000 − Salaries ₹50,000 − Supplies payable ₹30,000 + Rebecca 1st svc (already received in May) = ₹5,48,000. Note: ₹3,52,000 to be verified against full journal.
+        </div>
+
+        <div class="callout callout-maroon mt-1">
+          <strong>📌 June 10 Order — Not Yet Recognised</strong>
+          The ₹1,50,000 portfolio management order received on June 10 is NOT recognised as revenue in June because the services have not yet been rendered (accrual basis). It will be recognised when performed.
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Concepts Applied -->
+    <section>
+      <h2 class="section-title">Key Accounting Concepts Applied in This Case</h2>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">📅</div>
+          <h3>Accrual Basis</h3>
+          <p>Salary for May is recognised as an expense on May 31 (when earned by the employee) even though it was paid in June.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔄</div>
+          <h3>Deferred Revenue</h3>
+          <p>Rebecca Olsen's advance is a <em>liability</em> until each service is performed. ₹50,000 is earned per service rendered.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚖️</div>
+          <h3>Matching Principle</h3>
+          <p>Supplies consumed (₹24,000) are expensed in the period they are used, not when purchased — matching cost with benefit.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏢</div>
+          <h3>Going Concern</h3>
+          <p>Assets like furniture and equipment are recorded at cost, not liquidation value — the firm is expected to continue operating.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="text-center">
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="accounting-equation.html" style="display:inline-block;background:transparent;color:var(--maroon);padding:0.75rem 2rem;border-radius:100px;font-weight:600;text-decoration:none;border:2px solid var(--maroon);">← Accounting Equation</a>
+        <a href="index.html" style="display:inline-block;background:var(--maroon);color:#fff;padding:0.75rem 2rem;border-radius:100px;font-weight:600;text-decoration:none;">↩ Back to Home</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <h4>Prof. Sarath Babu</h4>
+      <p>Institute of Management Technology, Hyderabad</p>
+      <p style="margin-top:0.25rem;"><span class="gold-text">MOP-IFA</span> &nbsp;·&nbsp; Introduction to Financial Accounting</p>
+      <hr />
+      <p class="footer-bottom">© 2026 IMT Hyderabad. Course material for academic use only.</p>
+    </div>
+  </footer>
+
+  <script>
+    function switchMonth(month) {
+      document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.month-panel').forEach(p => p.classList.remove('active'));
+      document.querySelector(`[onclick="switchMonth('${month}')"]`).classList.add('active');
+      document.getElementById(`panel-${month}`).classList.add('active');
+    }
+
+    function switchFS(month) {
+      // target only the FS section buttons
+      const fsSection = document.getElementById(`fs-${month}`).closest('section');
+      fsSection.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+      fsSection.querySelectorAll('.month-panel').forEach(p => p.classList.remove('active'));
+      fsSection.querySelector(`[onclick="switchFS('${month}')"]`).classList.add('active');
+      document.getElementById(`fs-${month}`).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
