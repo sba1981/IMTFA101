@@ -4,7 +4,652 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MOP-IFA | Introduction to Financial Accounting — IMT Hyderabad</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+/* ============================================================
+   MOP-IFA | IMT Hyderabad — Stylesheet
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --maroon:      #0E5F8A;
+  --maroon-dark: #09405F;
+  --maroon-light:#1A82B5;
+  --gold:        #F0A500;
+  --gold-light:  #FFD166;
+  --white:       #FFFFFF;
+  --off-white:   #F2F8FC;
+  --gray-100:    #E6F1F8;
+  --gray-200:    #CDE3F0;
+  --gray-500:    #6A8EA0;
+  --gray-700:    #2D4E5E;
+  --text:        #0D2233;
+  --shadow-sm:   0 2px 8px rgba(9,64,95,0.10);
+  --shadow-md:   0 4px 20px rgba(9,64,95,0.14);
+  --shadow-lg:   0 8px 32px rgba(9,64,95,0.18);
+  --radius:      8px;
+  --radius-lg:   14px;
+  --transition:  0.25s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--off-white);
+}
+
+/* ── Top Banner ── */
+.top-banner {
+  background: var(--maroon-dark);
+  color: rgba(255,255,255,0.75);
+  font-size: 0.78rem;
+  text-align: center;
+  padding: 6px 1rem;
+  letter-spacing: 0.03em;
+}
+
+/* ── Header ── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 64px;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-logo {
+  background: var(--maroon);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 0.9rem;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.brand-text { line-height: 1.2; }
+.course-code { font-size: 0.7rem; font-weight: 700; color: var(--maroon); text-transform: uppercase; letter-spacing: 0.08em; }
+.course-name { font-size: 0.82rem; font-weight: 600; color: var(--gray-700); }
+
+nav { display: flex; gap: 0.25rem; align-items: center; }
+nav a {
+  padding: 0.4rem 0.9rem;
+  border-radius: 100px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--gray-700);
+  text-decoration: none;
+  transition: all var(--transition);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+nav a:hover { color: var(--maroon); background: var(--gray-100); }
+nav a.active { background: var(--maroon); color: var(--white); font-weight: 600; }
+
+/* ── Page Views ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(135deg, var(--maroon-dark) 0%, var(--maroon) 60%, var(--maroon-light) 100%);
+  color: var(--white);
+  padding: 3.5rem 1.5rem 3rem;
+}
+
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.hero h1 span { color: var(--gold-light); }
+
+.hero p {
+  font-size: 1.05rem;
+  opacity: 0.85;
+  max-width: 600px;
+  margin-bottom: 1.75rem;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-meta-item .label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+.hero-meta-item .value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold-light);
+}
+
+.gold-line { height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); }
+
+/* ── Main ── */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+main section { margin-bottom: 3rem; }
+main section:last-child { margin-bottom: 0; }
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--maroon-dark);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.section-subtitle {
+  color: var(--gray-500);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Cards ── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.card h3 { font-size: 1rem; color: var(--maroon-dark); margin-bottom: 0.5rem; }
+.card p  { font-size: 0.875rem; color: var(--gray-700); line-height: 1.6; }
+.card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.card-link { display: inline-block; margin-top: 1rem; color: var(--maroon); font-weight: 600; font-size: 0.85rem; text-decoration: none; cursor: pointer; }
+.card-link:hover { text-decoration: underline; }
+
+/* ── Session Table ── */
+.session-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.875rem;
+}
+
+.session-table th {
+  background: var(--maroon);
+  color: var(--white);
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.session-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--gray-100);
+  vertical-align: top;
+}
+
+.session-table tr:last-child td { border-bottom: none; }
+.session-table tr:nth-child(even) { background: var(--off-white); }
+.session-num {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  background: var(--maroon);
+  color: #fff;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ── Content Blocks ── */
+.content-block {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  margin-bottom: 1.25rem;
+}
+
+.content-block h2 {
+  font-size: 1.05rem;
+  color: var(--maroon-dark);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.content-block h3 {
+  font-size: 0.95rem;
+  color: var(--maroon);
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+}
+
+.content-block p { margin-bottom: 0.75rem; font-size: 0.9rem; }
+
+/* ── Info Grid ── */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.info-item {
+  background: var(--gray-100);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+}
+
+.info-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); font-weight: 600; margin-bottom: 0.25rem; }
+.info-value { font-size: 0.9rem; font-weight: 600; color: var(--maroon-dark); }
+
+/* ── Callout Boxes ── */
+.callout {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius);
+  border-left: 4px solid;
+  margin: 1.25rem 0;
+  font-size: 0.9rem;
+}
+
+.callout-gold  { background: #FFF8E6; border-color: var(--gold); }
+.callout-maroon { background: #E6F3FA; border-color: var(--maroon); }
+.callout-blue  { background: #EEF4FB; border-color: #3B82F6; }
+
+.callout strong { display: block; margin-bottom: 0.3rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.callout-gold strong  { color: #8A6A10; }
+.callout-maroon strong { color: var(--maroon); }
+.callout-blue strong  { color: #1D4ED8; }
+
+/* ── Pill Tags ── */
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.tag-maroon { background: #D6EAF5; color: var(--maroon); }
+.tag-gold   { background: #FDF2D0; color: #8A6A10; }
+.tag-gray   { background: var(--gray-200); color: var(--gray-700); }
+
+/* ── Equation Display ── */
+.equation-box {
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
+  color: var(--white);
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius-lg);
+  margin: 1.5rem 0;
+}
+
+.equation-box p { font-size: 0.9rem; opacity: 0.8; margin-top: 0.75rem; }
+
+.equation {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.equation .op { color: var(--gold-light); margin: 0 0.5rem; }
+
+/* ── Tables ── */
+.fin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.fin-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.fin-table tr:last-child td { border-bottom: none; }
+.fin-table .total td { font-weight: 700; border-top: 2px solid var(--maroon); padding-top: 0.75rem; }
+.fin-table .subtotal td { font-weight: 600; border-top: 1px solid var(--gray-500); }
+.fin-table td:last-child { text-align: right; }
+
+.txn-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin: 1rem 0;
+}
+
+.txn-table th {
+  background: var(--gray-100);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.txn-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--gray-100);
+  vertical-align: top;
+}
+
+/* ── Gap Row ── */
+.gap-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.grow { flex: 1; }
+@media (max-width: 680px) { .gap-row { grid-template-columns: 1fr; } }
+
+/* ── Pill List ── */
+.pill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
+
+/* ── Footer ── */
+footer {
+  background: var(--maroon-dark);
+  color: rgba(255,255,255,0.75);
+  margin-top: 4rem;
+  padding: 2.5rem 1.5rem 2rem;
+}
+
+.footer-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-inner h4 { color: var(--white); font-size: 1rem; margin-bottom: 0.25rem; }
+.footer-inner p  { font-size: 0.85rem; }
+.footer-inner hr { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 1rem 0; }
+.footer-bottom   { font-size: 0.75rem; opacity: 0.5; }
+.gold-text       { color: var(--gold-light); font-weight: 600; }
+
+/* ── Utility ── */
+.mt-1 { margin-top: 0.75rem; }
+.mt-2 { margin-top: 1.5rem; }
+.text-center { text-align: center; }
+
+/* ── Faculty Profile ── */
+.faculty-section {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.faculty-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.faculty-photo-wrap { flex-shrink: 0; }
+
+.faculty-photo {
+  width: 180px;
+  height: 220px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 3px solid var(--gray-200);
+}
+
+.faculty-badge {
+  display: inline-block;
+  background: var(--maroon);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.7rem;
+  border-radius: 100px;
+  margin-bottom: 0.6rem;
+}
+
+.faculty-name {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--maroon-dark);
+  margin-bottom: 0.2rem;
+}
+
+.faculty-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--maroon);
+  margin-bottom: 0.15rem;
+}
+
+.faculty-institution {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-bottom: 1rem;
+}
+
+.faculty-bio {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--gray-700);
+  margin-bottom: 1.2rem;
+}
+
+.faculty-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray-500);
+  margin-bottom: 0.5rem;
+}
+
+.faculty-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+@media (max-width: 640px) {
+  .faculty-inner { flex-direction: column; align-items: center; text-align: center; }
+  .faculty-tags  { justify-content: center; }
+}
+
+/* ── Accounting Equation page extras ── */
+.eq-split { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+.eq-asset  { background: var(--maroon); color: #fff; padding: 1.5rem; }
+.eq-right  { background: var(--maroon-dark); color: #fff; padding: 1.5rem; }
+.eq-sep    { background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: var(--maroon-dark); padding: 0 1rem; }
+.eq-split h3 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; margin-bottom: 0.75rem; }
+.eq-split .big { font-size: 2rem; font-weight: 800; }
+.eq-split p  { font-size: 0.82rem; opacity: 0.8; margin-top: 0.5rem; line-height: 1.5; }
+
+.txn-row { display: grid; grid-template-columns: 60px 1fr; gap: 0.75rem; align-items: start; padding: 1rem 0; border-bottom: 1px solid var(--gray-200); }
+.txn-row:last-child { border-bottom: none; }
+.txn-date { background: var(--maroon); color: #fff; border-radius: var(--radius); padding: 0.35rem 0.5rem; text-align: center; font-size: 0.7rem; font-weight: 700; line-height: 1.3; }
+.txn-desc { font-size: 0.9rem; }
+.txn-desc strong { color: var(--maroon-dark); }
+.txn-effect { font-size: 0.78rem; color: var(--gray-500); margin-top: 0.25rem; }
+.effect-up   { color: #15803D; font-weight: 600; }
+.effect-down { color: #DC2626; font-weight: 600; }
+
+@media (max-width: 600px) {
+  .eq-split { grid-template-columns: 1fr; }
+  .eq-sep   { padding: 0.75rem; font-size: 1.2rem; }
+}
+
+/* ── Case Study page extras ── */
+.month-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+.month-btn {
+  flex: 1; padding: 0.75rem; text-align: center;
+  background: var(--gray-200); border: none; border-radius: var(--radius);
+  font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  color: var(--gray-700); transition: all 0.2s; max-width: 180px;
+}
+.month-btn.active { background: var(--maroon); color: #fff; }
+.month-panel { display: none; }
+.month-panel.active { display: block; }
+
+.txn-full { display: grid; grid-template-columns: 80px 1fr; gap: 0.75rem; align-items: start; padding: 0.9rem 0; border-bottom: 1px solid var(--gray-200); }
+.txn-full:last-child { border-bottom: none; }
+.txn-date-badge { background: var(--maroon); color: #fff; border-radius: var(--radius); padding: 0.4rem 0.5rem; text-align: center; font-size: 0.7rem; font-weight: 700; line-height: 1.4; }
+.txn-body strong { font-size: 0.9rem; color: var(--text); }
+.txn-note { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.2rem; font-style: italic; }
+.txn-acct { margin-top: 0.35rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.dr { background: #FEE2E2; color: #991B1B; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.cr { background: #DCFCE7; color: #166534; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+
+.fs-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 680px) { .fs-wrapper { grid-template-columns: 1fr; } .month-btn { max-width: 100%; } }
+
+.fs-card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; border: 1px solid var(--gray-200); }
+.fs-card-header { background: var(--maroon); color: #fff; padding: 1rem 1.25rem; }
+.fs-card-header h3 { font-size: 1rem; font-weight: 700; }
+.fs-card-header p  { font-size: 0.78rem; opacity: 0.8; margin-top: 0.2rem; }
+.fs-body { padding: 0; }
+.fs-row { display: flex; justify-content: space-between; padding: 0.6rem 1.25rem; border-bottom: 1px solid var(--gray-100); font-size: 0.875rem; }
+.fs-row:last-child { border-bottom: none; }
+.fs-row.section-head { background: var(--gray-100); font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-700); }
+.fs-row.subtotal { background: #FDF8EC; font-weight: 600; border-top: 2px solid var(--gold); }
+.fs-row.total    { background: var(--maroon); color: #fff; font-weight: 700; border-top: 2px solid var(--maroon-dark); }
+.fs-row .amount  { font-weight: 500; }
+.fs-row .indent  { padding-left: 1rem; }
+.neg { color: #DC2626; }
+.pos { color: #16A34A; }
+
+/* ── Nav button CTA ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--maroon);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: 100px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--maroon-dark); }
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--maroon);
+  padding: 0.75rem 2rem;
+  border-radius: 100px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--maroon);
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+.btn-outline:hover { background: var(--maroon); color: #fff; }
+
+.btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── Game Styles ── */
+.g-el-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 0.85rem 0.4rem; border: 2px solid var(--gray-200); border-radius: var(--radius-lg);
+  background: var(--white); cursor: pointer; transition: all 0.18s; text-align: center;
+  user-select: none; gap: 0.3rem; width: 100%;
+}
+.g-el-btn:hover { border-color: var(--maroon); background: var(--gray-100); transform: translateY(-2px); }
+.g-el-btn.selected { border-color: var(--maroon); background: #dceef8; box-shadow: 0 0 0 3px rgba(14,95,138,0.18); }
+.g-el-btn .el-icon { font-size: 1.6rem; line-height: 1; }
+.g-el-btn .el-name { font-size: 0.72rem; font-weight: 700; color: var(--maroon-dark); letter-spacing: 0.02em; }
+.g-el-btn.correct  { border-color: #16A34A !important; background: #f0fdf4 !important; }
+.g-el-btn.correct .el-name  { color: #15803D; }
+.g-el-btn.wrong    { border-color: #DC2626 !important; background: #fef2f2 !important; }
+.g-el-btn.wrong .el-name    { color: #DC2626; }
+.g-el-btn.missed   { border-color: #EA580C !important; background: #fff7ed !important; }
+.g-el-btn.missed .el-name   { color: #C2410C; }
+.g-el-btn.neutral  { opacity: 0.4; pointer-events: none; }
+.g-feedback-box    { border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; border-left: 5px solid; }
+.g-fb-perfect      { background: #f0fdf4; border-color: #16A34A; }
+.g-fb-partial      { background: #fff7ed; border-color: #EA580C; }
+.g-fb-wrong        { background: #fef2f2; border-color: #DC2626; }
+.g-stat-bar-wrap   { background: var(--gray-200); border-radius: 100px; height: 10px; flex: 1; overflow: hidden; }
+.g-stat-bar        { height: 100%; border-radius: 100px; transition: width 1.2s ease; }
+@media (max-width: 600px) {
+  #g-elements { grid-template-columns: repeat(3, 1fr) !important; }
+  .g-el-btn .el-icon { font-size: 1.3rem; }
+  .g-el-btn .el-name { font-size: 0.65rem; }
+}
+  </style>
 </head>
 <body>
 
@@ -12,203 +657,1922 @@
 
   <header>
     <div class="header-inner">
-      <a class="header-brand" href="index.html">
+      <div class="header-brand" onclick="showPage('home')">
         <div class="brand-logo">IMT</div>
         <div class="brand-text">
           <div class="course-code">MOP-IFA</div>
           <div class="course-name">Introduction to Financial Accounting</div>
         </div>
-      </a>
+      </div>
       <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="framework.html">Framework</a>
-        <a href="accounting-equation.html">Accounting Equation</a>
-        <a href="case-study.html">Case Study</a>
+        <a id="nav-home"      class="active" onclick="showPage('home')">Home</a>
+        <a id="nav-framework"          onclick="showPage('framework')">Framework</a>
+        <a id="nav-equation"           onclick="showPage('equation')">Accounting Equation</a>
+        <a id="nav-casestudy"          onclick="showPage('casestudy')">Case Study</a>
+        <a id="nav-orgforms"           onclick="showPage('orgforms')">Forms of Organisation</a>
+        <a id="nav-game"               onclick="showPage('game')">🎮 Element Game</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-badge">MOP-IFA &nbsp;·&nbsp; Fundamentals of Accounting</div>
-      <h1>Introduction to<br><span>Financial Accounting</span></h1>
-      <p>A structured four-session module covering the ICAI Framework, elements of financial statements, and the accounting equation — grounded in real-world cases.</p>
-      <div class="hero-meta">
-        <div class="hero-meta-item">
-          <div class="label">Programme</div>
-          <div class="value">MOP</div>
+
+  <!-- ═══════════════════════════════════════════
+       PAGE: HOME
+  ════════════════════════════════════════════ -->
+  <div id="page-home" class="page active">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge">MOP-IFA &nbsp;·&nbsp; Fundamentals of Accounting</div>
+        <h1>Introduction to<br><span>Financial Accounting</span></h1>
+        <p>A structured four-session module covering the ICAI Framework, elements of financial statements, and the accounting equation — grounded in real-world cases.</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <div class="label">Programme</div>
+            <div class="value">MOP</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="label">Sessions</div>
+            <div class="value">4</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="label">Institution</div>
+            <div class="value">IMT Hyderabad</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="label">Faculty</div>
+            <div class="value">Prof. Sarath Babu</div>
+          </div>
         </div>
-        <div class="hero-meta-item">
-          <div class="label">Sessions</div>
-          <div class="value">4</div>
+      </div>
+    </section>
+    <div class="gold-line"></div>
+
+    <!-- Faculty Profile -->
+    <section class="faculty-section">
+      <div class="faculty-inner">
+        <div class="faculty-photo-wrap">
+          <img src="faculty-photo.jpg" alt="Dr. A. Sarath Babu" class="faculty-photo" />
         </div>
-        <div class="hero-meta-item">
-          <div class="label">Institution</div>
-          <div class="value">IMT Hyderabad</div>
+        <div class="faculty-info">
+          <div class="faculty-badge">Course Faculty</div>
+          <h2 class="faculty-name">Dr. A. Sarath Babu</h2>
+          <div class="faculty-title">Associate Professor of Finance &amp; Accounting</div>
+          <div class="faculty-institution">Institute of Management Technology, Hyderabad</div>
+          <p class="faculty-bio">
+            Dr. Sarath Babu has over two decades of combined experience in academia and industry. His research has been published in journals such as <em>Economics Letters</em>, <em>Finance Research Letters</em>, <em>Technology Analysis &amp; Strategic Management</em>, and the <em>International Journal of Productivity and Performance Management</em>. His current research focuses on regulatory reforms, tax avoidance, insider trading, managerial ability, and financial market behaviour in emerging economies. He has completed advanced training in Statistical Methods in Risk Management from the London School of Economics and Political Science (LSE), UK.
+          </p>
+          <div class="faculty-interests">
+            <span class="faculty-label">Teaching &amp; Research Interests</span>
+            <div class="faculty-tags">
+              <span class="tag tag-maroon">Financial Accounting</span>
+              <span class="tag tag-maroon">Corporate Finance</span>
+              <span class="tag tag-maroon">Corporate Governance</span>
+              <span class="tag tag-gold">Fixed Income Securities</span>
+              <span class="tag tag-gold">International Finance</span>
+              <span class="tag tag-gold">Behavioral Finance</span>
+              <span class="tag tag-gray">Taxation</span>
+              <span class="tag tag-gray">Financial Markets</span>
+            </div>
+          </div>
         </div>
-        <div class="hero-meta-item">
-          <div class="label">Faculty</div>
-          <div class="value">Prof. Sarath Babu</div>
+      </div>
+    </section>
+
+    <main>
+
+      <!-- Learning Objectives -->
+      <section>
+        <h2 class="section-title">Learning Objectives</h2>
+        <p class="section-subtitle">By the end of this module, students will be able to:</p>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon">📋</div>
+            <h3>Understand the ICAI Framework</h3>
+            <p>Grasp the purpose and scope of the Framework for Preparation and Presentation of Financial Statements and its key qualitative characteristics.</p>
+            <span class="card-link" onclick="showPage('framework')">Explore Framework →</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚖️</div>
+            <h3>Apply the Accounting Equation</h3>
+            <p>Record business transactions using Assets = Liabilities + Equity and understand how every transaction preserves the balance.</p>
+            <span class="card-link" onclick="showPage('equation')">See the Equation →</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>Prepare Financial Statements</h3>
+            <p>Construct an Income Statement and Balance Sheet from a series of transactions using the accrual basis of accounting.</p>
+            <span class="card-link" onclick="showPage('casestudy')">Open Case Study →</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">👥</div>
+            <h3>Identify Stakeholders &amp; Relevance</h3>
+            <p>Explain why enterprises prepare financial statements and how different stakeholder groups — investors, lenders, employees — use them.</p>
+            <span class="card-link" onclick="showPage('framework')">View Stakeholders →</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Session Plan -->
+      <section>
+        <h2 class="section-title">Session Plan</h2>
+        <p class="section-subtitle">Four sessions covering theory, concepts, and applied practice</p>
+        <table class="session-table">
+          <thead>
+            <tr>
+              <th>Session</th>
+              <th>Topic</th>
+              <th>Key Concepts</th>
+              <th>Resource</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="session-num">1</span></td>
+              <td><strong>The Framework — Why Financial Statements?</strong><br>
+                  <small style="color:#888">Forms of organisations · Purpose of reporting</small></td>
+              <td>
+                <span class="tag tag-maroon">Sole Proprietorship</span>
+                <span class="tag tag-maroon">Partnership</span>
+                <span class="tag tag-maroon">Corporation</span>
+              </td>
+              <td><span class="card-link" onclick="showPage('framework')">Framework →</span></td>
+            </tr>
+            <tr>
+              <td><span class="session-num">2</span></td>
+              <td><strong>Elements, Conventions &amp; Qualitative Characteristics</strong><br>
+                  <small style="color:#888">What makes a financial statement useful?</small></td>
+              <td>
+                <span class="tag tag-gold">Relevance</span>
+                <span class="tag tag-gold">Reliability</span>
+                <span class="tag tag-gold">Comparability</span>
+              </td>
+              <td><span class="card-link" onclick="showPage('framework')">Framework →</span></td>
+            </tr>
+            <tr>
+              <td><span class="session-num">3</span></td>
+              <td><strong>Notions of Income &amp; Wealth</strong><br>
+                  <small style="color:#888">Stock vs Flow measures · Stakeholder relevance</small></td>
+              <td>
+                <span class="tag tag-gray">Income</span>
+                <span class="tag tag-gray">Wealth</span>
+                <span class="tag tag-gray">Accrual Basis</span>
+              </td>
+              <td><span class="card-link" onclick="showPage('framework')">Framework →</span></td>
+            </tr>
+            <tr>
+              <td><span class="session-num">4</span></td>
+              <td><strong>The Accounting Equation in Practice</strong><br>
+                  <small style="color:#888">WealthAdvisors LLP case · Building financial statements</small></td>
+              <td>
+                <span class="tag tag-maroon">A = L + E</span>
+                <span class="tag tag-gold">Income Statement</span>
+                <span class="tag tag-gold">Balance Sheet</span>
+              </td>
+              <td><span class="card-link" onclick="showPage('casestudy')">Case Study →</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-gold mt-2">
+          <strong>📝 Assessment</strong>
+          Sessions are followed by a case-based assignment on the preparation of financial statements.
+        </div>
+      </section>
+
+      <!-- Reading Materials -->
+      <section>
+        <h2 class="section-title">Reading Materials</h2>
+        <p class="section-subtitle">Primary references for this module</p>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon">📘</div>
+            <h3>ICAI Framework</h3>
+            <p>Framework for Preparation and Presentation of Financial Statements — issued by the Institute of Chartered Accountants of India. Covers components, objectives, qualitative characteristics, and measurement principles.</p>
+            <span class="tag tag-maroon">Primary Reading</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">📄</div>
+            <h3>Faculty Handout</h3>
+            <p>Introduction to Financial Accounting — faculty notes covering the accounting equation, financial elements, and worked examples using the WealthAdvisors LLP case.</p>
+            <span class="tag tag-gold">Supplementary</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Navigation -->
+      <section>
+        <h2 class="section-title">Explore the Module</h2>
+        <div class="card-grid">
+          <div class="card" style="border-top:4px solid var(--maroon);">
+            <h3>📋 ICAI Framework</h3>
+            <p>Components of financial statements, seven categories of users, three fundamental accounting assumptions, and five qualitative characteristics.</p>
+            <span class="card-link" onclick="showPage('framework')">Go to Framework →</span>
+          </div>
+          <div class="card" style="border-top:4px solid var(--gold);">
+            <h3>⚖️ Accounting Equation</h3>
+            <p>Assets = Liabilities + Equity explained with step-by-step transaction walkthroughs from the WealthAdvisors case.</p>
+            <span class="card-link" onclick="showPage('equation')">Go to Equation →</span>
+          </div>
+          <div class="card" style="border-top:4px solid var(--maroon-light);">
+            <h3>🏢 WealthAdvisors Case</h3>
+            <p>Full case study with May and June 2026 transactions, Income Statement, and Balance Sheet for each month.</p>
+            <span class="card-link" onclick="showPage('casestudy')">Go to Case Study →</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /page-home -->
+
+
+  <!-- ═══════════════════════════════════════════
+       PAGE: FRAMEWORK
+  ════════════════════════════════════════════ -->
+  <div id="page-framework" class="page">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge">Sessions 1 – 3 &nbsp;·&nbsp; ICAI Framework</div>
+        <h1>Framework for Preparation &amp;<br><span>Presentation of Financial Statements</span></h1>
+        <p>The ICAI framework provides the conceptual foundation for accounting standards — covering what financial statements are, who uses them, and what makes them useful.</p>
+      </div>
+    </section>
+    <div class="gold-line"></div>
+
+    <main>
+
+      <section>
+        <h2 class="section-title">1. Purpose of the Framework</h2>
+        <div class="content-block">
+          <p>The <strong>Accounting Standards Board (ASB)</strong> of the ICAI issued the Framework in July 2000. It provides the fundamental basis for developing new accounting standards and reviewing existing ones.</p>
+          <p>The framework assists:</p>
+          <div class="info-grid">
+            <div class="info-item"><div class="info-label">Enterprises</div><div class="info-value">Prepare statements in compliance with accounting standards</div></div>
+            <div class="info-item"><div class="info-label">ASB</div><div class="info-value">Develop and review accounting standards consistently</div></div>
+            <div class="info-item"><div class="info-label">Auditors</div><div class="info-value">Form opinions on whether statements conform to standards</div></div>
+            <div class="info-item"><div class="info-label">Users</div><div class="info-value">Interpret financial statements for economic decisions</div></div>
+          </div>
+          <div class="callout callout-maroon mt-2">
+            <strong>⚠️ Important</strong>
+            In case of conflict between an Accounting Standard and the Framework, the requirements of the <em>Accounting Standard prevail</em>.
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">2. Components of Financial Statements</h2>
+        <p class="section-subtitle">A complete set of financial statements consists of four parts</p>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>Balance Sheet</h3>
+            <p>Portrays the value of economic resources controlled by an enterprise. Provides information about liquidity and solvency — useful in predicting the ability to meet financial commitments.</p>
+            <span class="tag tag-maroon">Position Statement</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">📈</div>
+            <h3>Statement of Profit &amp; Loss</h3>
+            <p>Presents the result of operations for an accounting period. Shows revenue earned, expenses incurred, and the resulting profit or loss.</p>
+            <span class="tag tag-gold">Flow Statement</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">💵</div>
+            <h3>Cash Flow Statement</h3>
+            <p>Shows how an enterprise has generated cash (inflows) and how it has been used (outflows) during an accounting period across operating, investing, and financing activities.</p>
+            <span class="tag tag-gold">Flow Statement</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">📝</div>
+            <h3>Notes &amp; Schedules</h3>
+            <p>Present supplementary information explaining items in the financial statements — including disclosures about risks, uncertainties, accounting policies, and segment reports.</p>
+            <span class="tag tag-gray">Supplementary</span>
+          </div>
+        </div>
+        <div class="callout callout-gold mt-2">
+          <strong>📌 Stock vs Flow</strong>
+          The Balance Sheet is a <em>stock measure</em> — it captures position at a point in time. The P&amp;L and Cash Flow statements are <em>flow measures</em> — they capture activity over a period.
+        </div>
+      </section>
+
+      <section id="users">
+        <h2 class="section-title">3. Objectives &amp; Users of Financial Statements</h2>
+        <div class="content-block">
+          <p>The objective of financial statements is to provide information about the <strong>financial position, performance, and cash flows</strong> of an enterprise that is useful to a wide range of users for making economic decisions.</p>
+          <h3>Seven Broad Groups of Users</h3>
+          <div class="card-grid" style="margin-top:1rem;">
+            <div class="card" style="padding:1.25rem;">
+              <div style="font-size:1.5rem;margin-bottom:0.5rem;">💼</div>
+              <h3>Investors</h3>
+              <p style="font-size:0.82rem;">Assess risk and return to decide whether to buy, hold, or sell their investment.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <div style="font-size:1.5rem;margin-bottom:0.5rem;">👷</div>
+              <h3>Employees</h3>
+              <p style="font-size:0.82rem;">Interested in stability of the enterprise, ability to pay salaries and retirement benefits.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <div style="font-size:1.5rem;margin-bottom:0.5rem;">🏦</div>
+              <h3>Lenders</h3>
+              <p style="font-size:0.82rem;">Determine whether loans and related interest will be paid when due.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <div style="font-size:1.5rem;margin-bottom:0.5rem;">🛒</div>
+              <h3>Suppliers &amp; Creditors</h3>
+              <p style="font-size:0.82rem;">Assess whether amounts owed to them will be paid when they fall due.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <div style="font-size:1.5rem;margin-bottom:0.5rem;">🤝</div>
+              <h3>Customers</h3>
+              <p style="font-size:0.82rem;">Interested in continuity of the enterprise, especially for long-term contracts or warranties.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <div style="font-size:1.5rem;margin-bottom:0.5rem;">🏛️</div>
+              <h3>Government</h3>
+              <p style="font-size:0.82rem;">Regulate enterprises, assess taxes, compile national statistics, and set policy.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <div style="font-size:1.5rem;margin-bottom:0.5rem;">🌍</div>
+              <h3>Public</h3>
+              <p style="font-size:0.82rem;">Enterprises affect the community through employment, local suppliers, and environmental impact.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="assumptions">
+        <h2 class="section-title">4. Fundamental Accounting Assumptions</h2>
+        <p class="section-subtitle">Users take these for granted — no separate disclosure needed unless one is not followed</p>
+
+        <div class="content-block">
+          <h2>Going Concern</h2>
+          <p>Financial statements are prepared on the assumption that an enterprise will <strong>continue in operation in the foreseeable future</strong>. There is neither intention nor need to materially curtail the scale of operations.</p>
+          <p>Under this assumption, assets are recorded at cost (not liquidation value) and liabilities are expected to be settled in the normal course of business.</p>
+          <div class="callout callout-gold">
+            <strong>📌 Key Implication</strong>
+            If an enterprise is being wound up or is at risk of closure, it must <em>disclose that going concern has NOT been assumed</em> and explain the basis used instead.
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>Accrual Basis</h2>
+          <p>Transactions are recognised when they <strong>occur</strong>, not when cash is received or paid. Revenue is recognised when earned; expenses when incurred.</p>
+          <h3>Accrual vs Cash Basis — Quick Comparison</h3>
+          <table class="txn-table" style="margin-top:0.75rem;">
+            <thead>
+              <tr>
+                <th style="text-align:left;">Situation</th>
+                <th style="text-align:left;">Cash Basis</th>
+                <th style="text-align:left;">Accrual Basis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Credit sale in Period 1, cash received in Period 2</td><td>Recognised in Period 2</td><td>Recognised in Period 1</td></tr>
+              <tr><td>Salary for December paid in January</td><td>Recognised in January</td><td>Recognised in December</td></tr>
+              <tr><td>Advance received for services not yet rendered</td><td>Income when received</td><td>Liability until service delivered</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-blue mt-2">
+            <strong>ℹ️ Why Accrual is Better</strong>
+            Accrual basis ensures better matching between revenue and cost. Section 209(3)(b) of the Companies Act makes it <em>mandatory for companies</em> to maintain accounts on an accrual basis.
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>Consistency</h2>
+          <p>The same accounting policies should be applied for <strong>similar transactions across all accounting periods</strong>. This improves the comparability of financial statements over time.</p>
+          <p>An accounting policy can be changed only if required by:</p>
+          <div class="pill-list">
+            <span class="tag tag-maroon">A Statute or Law</span>
+            <span class="tag tag-maroon">An Accounting Standard</span>
+            <span class="tag tag-maroon">For More Appropriate Presentation</span>
+          </div>
+          <div class="callout callout-gold mt-2">
+            <strong>📌 Disclosure Rule</strong>
+            Any change in accounting policy must be <em>disclosed</em>, along with its effect on the financial statements.
+          </div>
+        </div>
+      </section>
+
+      <section id="characteristics">
+        <h2 class="section-title">5. Qualitative Characteristics</h2>
+        <p class="section-subtitle">Attributes that make financial statement information useful to its users</p>
+        <div class="card-grid">
+          <div class="card" style="border-left:4px solid var(--maroon);">
+            <div style="font-size:1.8rem;margin-bottom:0.75rem;">🧠</div>
+            <h3>Understandability</h3>
+            <p>Information must be presented in a manner readily understandable by users with reasonable knowledge of business and economic activities. More information is not always better — irrelevant information creates confusion.</p>
+          </div>
+          <div class="card" style="border-left:4px solid var(--maroon);">
+            <div style="font-size:1.8rem;margin-bottom:0.75rem;">🎯</div>
+            <h3>Relevance</h3>
+            <p>Information that influences the economic decisions of users is relevant. It may help evaluate past, present, or future events, or confirm/correct past evaluations. Relevance is judged by <em>materiality</em> — omission or misstatement of material information can mislead users.</p>
+          </div>
+          <div class="card" style="border-left:4px solid var(--gold);">
+            <div style="font-size:1.8rem;margin-bottom:0.75rem;">✅</div>
+            <h3>Reliability</h3>
+            <p>Information must be free from material error and bias. To be reliable, it must:<br>• Faithfully represent transactions<br>• Reflect economic substance over legal form<br>• Be neutral and free from bias<br>• Exercise prudence in uncertain outcomes</p>
+          </div>
+          <div class="card" style="border-left:4px solid var(--gold);">
+            <div style="font-size:1.8rem;margin-bottom:0.75rem;">🔄</div>
+            <h3>Comparability</h3>
+            <p>Users must be able to compare financial statements across time (same enterprise) and across enterprises. Consistent application of accounting policies enables meaningful comparisons. Accounting policies must be disclosed to allow users to understand the basis.</p>
+          </div>
+          <div class="card" style="border-left:4px solid var(--maroon-light);">
+            <div style="font-size:1.8rem;margin-bottom:0.75rem;">🤝</div>
+            <h3>Faithful Representation</h3>
+            <p>Financial statements must faithfully represent transactions and other events they purport to represent. The economic substance of a transaction must be reflected even if the legal form differs (<em>substance over form</em>).</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">6. Elements of Financial Statements</h2>
+        <div class="content-block">
+          <p>The framework identifies five broad elements directly related to the measurement of financial position and performance:</p>
+          <div class="card-grid" style="margin-top:1rem;">
+            <div class="card" style="padding:1.25rem;background:var(--gray-100);">
+              <h3>Assets</h3>
+              <p style="font-size:0.82rem;">Resources controlled by the enterprise as a result of past events, from which future economic benefits are expected to flow.</p>
+              <p style="font-size:0.8rem;margin-top:0.5rem;color:var(--gold);font-weight:600;">Balance Sheet</p>
+            </div>
+            <div class="card" style="padding:1.25rem;background:var(--gray-100);">
+              <h3>Liabilities</h3>
+              <p style="font-size:0.82rem;">Present obligations arising from past events, the settlement of which is expected to result in an outflow of economic benefits.</p>
+              <p style="font-size:0.8rem;margin-top:0.5rem;color:var(--gold);font-weight:600;">Balance Sheet</p>
+            </div>
+            <div class="card" style="padding:1.25rem;background:var(--gray-100);">
+              <h3>Equity</h3>
+              <p style="font-size:0.82rem;">The residual interest in the assets of the enterprise after deducting all its liabilities. Also called <em>net assets</em> or <em>owners' equity</em>.</p>
+              <p style="font-size:0.8rem;margin-top:0.5rem;color:var(--gold);font-weight:600;">Balance Sheet</p>
+            </div>
+            <div class="card" style="padding:1.25rem;background:var(--gray-100);">
+              <h3>Income (Revenue)</h3>
+              <p style="font-size:0.82rem;">Increases in economic benefits during an accounting period in the form of inflows or enhancements of assets or decreases in liabilities that result in increases in equity.</p>
+              <p style="font-size:0.8rem;margin-top:0.5rem;color:var(--maroon);font-weight:600;">P&amp;L Statement</p>
+            </div>
+            <div class="card" style="padding:1.25rem;background:var(--gray-100);">
+              <h3>Expenses</h3>
+              <p style="font-size:0.82rem;">Decreases in economic benefits during an accounting period in the form of outflows or depletions of assets or incurrences of liabilities that result in decreases in equity.</p>
+              <p style="font-size:0.8rem;margin-top:0.5rem;color:var(--maroon);font-weight:600;">P&amp;L Statement</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="text-center">
+        <div class="btn-row">
+          <button class="btn-primary" onclick="showPage('equation')">Next: Accounting Equation →</button>
+          <button class="btn-outline" onclick="showPage('casestudy')">Case Study →</button>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /page-framework -->
+
+
+  <!-- ═══════════════════════════════════════════
+       PAGE: ACCOUNTING EQUATION
+  ════════════════════════════════════════════ -->
+  <div id="page-equation" class="page">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge">Session 4 &nbsp;·&nbsp; The Accounting Equation</div>
+        <h1>The Foundation of<br><span>Double-Entry Accounting</span></h1>
+        <p>Every business transaction affects the accounting equation. The equation always holds — this is the bedrock of financial accounting.</p>
+      </div>
+    </section>
+    <div class="gold-line"></div>
+
+    <main>
+
+      <section>
+        <h2 class="section-title">The Accounting Equation</h2>
+        <div class="equation-box">
+          <div class="equation">
+            Assets <span class="op">=</span> Liabilities <span class="op">+</span> Equity
+          </div>
+          <p>Every transaction changes at least two items — but the equation always remains balanced.</p>
+        </div>
+        <div class="eq-split mt-2">
+          <div class="eq-asset">
+            <h3>Left Side — What the business OWNS</h3>
+            <div class="big">Assets</div>
+            <p>Resources controlled by the enterprise from which future economic benefits are expected. Examples: cash, bank, equipment, receivables, prepaid deposits.</p>
+          </div>
+          <div class="eq-sep">=</div>
+          <div class="eq-right">
+            <h3>Right Side — Who FUNDED those assets</h3>
+            <div class="big">L + E</div>
+            <p><strong style="color:var(--gold-light);">Liabilities</strong> — what the business owes to outsiders (bank loans, creditors, accrued expenses).</p>
+            <p style="margin-top:0.5rem;"><strong style="color:var(--gold-light);">Equity</strong> — the owner's claim; capital contributed plus retained profits.</p>
+          </div>
+        </div>
+        <div class="callout callout-gold mt-2">
+          <strong>📌 Why It Always Balances</strong>
+          Assets are always financed by someone — either creditors (liabilities) or the owner (equity). Every ₹ of assets must have an equal and opposite source of funding.
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">The Expanded Equation</h2>
+        <div class="content-block">
+          <p>When we include income and expenses (which affect equity), the equation expands to:</p>
+          <div class="equation-box" style="padding:1.75rem;">
+            <div class="equation" style="font-size:clamp(1rem,3vw,1.6rem);">
+              Assets <span class="op">=</span> Liabilities <span class="op">+</span> Capital <span class="op">+</span> Income <span class="op">−</span> Expenses
+            </div>
+            <p>Income <strong>increases</strong> equity; Expenses <strong>decrease</strong> equity.</p>
+          </div>
+          <div class="info-grid" style="margin-top:1rem;">
+            <div class="info-item">
+              <div class="info-label">Capital (Owner's Contribution)</div>
+              <div class="info-value">Increases Equity ↑</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Revenue Earned</div>
+              <div class="info-value">Increases Equity ↑</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Expenses Incurred</div>
+              <div class="info-value">Decreases Equity ↓</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Drawings / Dividends</div>
+              <div class="info-value">Decreases Equity ↓</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Equation in Action — WealthAdvisors LLP</h2>
+        <p class="section-subtitle">Watch each May transaction and see how the equation stays balanced</p>
+        <div class="content-block">
+          <h2>Key Transactions — May 2026</h2>
+
+          <div class="txn-row">
+            <div class="txn-date">May<br>1</div>
+            <div class="txn-desc">
+              <strong>Jessica deposits ₹5,00,000 as capital contribution</strong>
+              <div class="txn-effect"><span class="effect-up">↑ Asset: Bank +₹5,00,000</span> &nbsp;|&nbsp; <span class="effect-up">↑ Equity: Capital +₹5,00,000</span></div>
+              <div class="txn-effect" style="margin-top:0.2rem;">A = L + E &nbsp;→&nbsp; 5,00,000 = 0 + 5,00,000 ✓</div>
+            </div>
+          </div>
+
+          <div class="txn-row">
+            <div class="txn-date">May<br>2</div>
+            <div class="txn-desc">
+              <strong>Registration &amp; legal fees ₹10,000 paid</strong>
+              <div class="txn-effect"><span class="effect-down">↓ Asset: Bank −₹10,000</span> &nbsp;|&nbsp; <span class="effect-down">↓ Equity: Expense +₹10,000 (reduces equity)</span></div>
+              <div class="txn-effect" style="margin-top:0.2rem;">A = L + E &nbsp;→&nbsp; 4,90,000 = 0 + 4,90,000 ✓</div>
+            </div>
+          </div>
+
+          <div class="txn-row">
+            <div class="txn-date">May<br>5</div>
+            <div class="txn-desc">
+              <strong>Bank loan of ₹3,00,000 at 8% interest</strong>
+              <div class="txn-effect"><span class="effect-up">↑ Asset: Bank +₹3,00,000</span> &nbsp;|&nbsp; <span class="effect-up">↑ Liability: Bank Loan +₹3,00,000</span></div>
+              <div class="txn-effect" style="margin-top:0.2rem;">A = L + E &nbsp;→&nbsp; 7,90,000 = 3,00,000 + 4,90,000 ✓</div>
+            </div>
+          </div>
+
+          <div class="txn-row">
+            <div class="txn-date">May<br>7</div>
+            <div class="txn-desc">
+              <strong>Security deposit ₹1,00,000 paid for office lease</strong>
+              <div class="txn-effect"><span class="effect-down">↓ Asset: Bank −₹1,00,000</span> &nbsp;|&nbsp; <span class="effect-up">↑ Asset: Prepaid Deposit +₹1,00,000</span></div>
+              <div class="txn-effect" style="margin-top:0.2rem;">Asset changes form — total assets unchanged. ✓</div>
+            </div>
+          </div>
+
+          <div class="txn-row">
+            <div class="txn-date">May<br>10</div>
+            <div class="txn-desc">
+              <strong>Office furniture purchased for ₹80,000 cash</strong>
+              <div class="txn-effect"><span class="effect-down">↓ Asset: Bank −₹80,000</span> &nbsp;|&nbsp; <span class="effect-up">↑ Asset: Furniture +₹80,000</span></div>
+              <div class="txn-effect" style="margin-top:0.2rem;">Asset swapped — total assets unchanged. ✓</div>
+            </div>
+          </div>
+
+          <div class="txn-row">
+            <div class="txn-date">May<br>12</div>
+            <div class="txn-desc">
+              <strong>Computer equipment ₹1,50,000 purchased on credit</strong>
+              <div class="txn-effect"><span class="effect-up">↑ Asset: Equipment +₹1,50,000</span> &nbsp;|&nbsp; <span class="effect-up">↑ Liability: Payable +₹1,50,000</span></div>
+              <div class="txn-effect" style="margin-top:0.2rem;">Both sides increase equally. ✓</div>
+            </div>
+          </div>
+
+          <div class="txn-row">
+            <div class="txn-date">May<br>20</div>
+            <div class="txn-desc">
+              <strong>Advisory services rendered — ₹1,00,000 received</strong>
+              <div class="txn-effect"><span class="effect-up">↑ Asset: Bank +₹1,00,000</span> &nbsp;|&nbsp; <span class="effect-up">↑ Equity: Revenue +₹1,00,000</span></div>
+              <div class="txn-effect" style="margin-top:0.2rem;">Revenue increases equity. ✓</div>
+            </div>
+          </div>
+
+          <div class="txn-row">
+            <div class="txn-date">May<br>22</div>
+            <div class="txn-desc">
+              <strong>₹2,00,000 advance received from Rebecca Olsen (4 services over 1 year)</strong>
+              <div class="txn-effect"><span class="effect-up">↑ Asset: Bank +₹2,00,000</span> &nbsp;|&nbsp; <span class="effect-up">↑ Liability: Deferred Revenue +₹2,00,000</span></div>
+              <div class="txn-effect" style="margin-top:0.2rem;">Cash received but service not yet performed → liability until earned. ✓</div>
+            </div>
+          </div>
+
+          <div class="txn-row">
+            <div class="txn-date">May<br>31</div>
+            <div class="txn-desc">
+              <strong>Expenses paid: Rent ₹30,000 + Utilities ₹8,000 (salary ₹25,000 accrued but unpaid)</strong>
+              <div class="txn-effect">
+                <span class="effect-down">↓ Asset: Bank −₹38,000</span> &nbsp;|&nbsp; <span class="effect-down">↓ Equity: Expenses (Rent + Utilities)</span><br>
+                <span class="effect-up">↑ Liability: Salary Payable +₹25,000</span> &nbsp;|&nbsp; <span class="effect-down">↓ Equity: Salary Expense +₹25,000</span>
+              </div>
+              <div class="txn-effect" style="margin-top:0.2rem;">Accrual: expense recognised even though cash not paid. ✓</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="callout callout-maroon">
+          <strong>⚖️ The Equation Always Holds</strong>
+          Notice that every transaction either (a) changes two assets, (b) changes an asset and a liability, (c) changes an asset and equity, or (d) changes a liability and equity — never just one side. This is the essence of <em>double-entry bookkeeping</em>.
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">End-of-May Position Summary</h2>
+        <div class="gap-row">
+          <div class="grow content-block">
+            <h2>Assets</h2>
+            <table class="fin-table">
+              <tbody>
+                <tr><td>Cash / Bank</td><td>₹ 3,72,000</td></tr>
+                <tr><td>Security Deposit (Office)</td><td>₹ 1,00,000</td></tr>
+                <tr><td>Office Furniture</td><td>₹ 80,000</td></tr>
+                <tr><td>Computer Equipment</td><td>₹ 1,50,000</td></tr>
+                <tr><td>Office Supplies (remaining)</td><td>₹ 26,000</td></tr>
+                <tr class="total"><td><strong>Total Assets</strong></td><td><strong>₹ 7,28,000</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grow content-block">
+            <h2>Liabilities + Equity</h2>
+            <table class="fin-table">
+              <tbody>
+                <tr><td colspan="2" style="color:var(--gray-500);font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;padding-bottom:0.25rem;">Liabilities</td></tr>
+                <tr><td>Bank Loan</td><td>₹ 3,00,000</td></tr>
+                <tr><td>Computer Equipment Payable</td><td>₹ 1,50,000</td></tr>
+                <tr><td>Supplies Payable</td><td>₹ 30,000</td></tr>
+                <tr><td>Salary Payable</td><td>₹ 25,000</td></tr>
+                <tr><td>Deferred Revenue (Rebecca Olsen)</td><td>₹ 1,50,000</td></tr>
+                <tr class="subtotal"><td>Total Liabilities</td><td>₹ 6,55,000</td></tr>
+                <tr><td colspan="2" style="color:var(--gray-500);font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;padding-top:0.75rem;padding-bottom:0.25rem;">Equity</td></tr>
+                <tr><td>Capital + Net Income (May)</td><td>₹ 73,000</td></tr>
+                <tr class="total"><td><strong>Total L + E</strong></td><td><strong>₹ 7,28,000</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="text-center">
+        <div class="btn-row">
+          <button class="btn-outline" onclick="showPage('framework')">← Back to Framework</button>
+          <button class="btn-primary" onclick="showPage('casestudy')">Full Case Study →</button>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /page-equation -->
+
+
+  <!-- ═══════════════════════════════════════════
+       PAGE: CASE STUDY
+  ════════════════════════════════════════════ -->
+  <div id="page-casestudy" class="page">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge">Session 4 &nbsp;·&nbsp; Applied Case Study</div>
+        <h1>WealthAdvisors LLP</h1>
+        <p>A newly established investment advisory firm. Track real transactions, apply accounting principles, and build the Income Statement and Balance Sheet for May and June 2026.</p>
+      </div>
+    </section>
+    <div class="gold-line"></div>
+
+    <main>
+
+      <section>
+        <h2 class="section-title">Company Background</h2>
+        <div class="content-block">
+          <div class="info-grid">
+            <div class="info-item"><div class="info-label">Firm</div><div class="info-value">WealthAdvisors LLP</div></div>
+            <div class="info-item"><div class="info-label">Founded by</div><div class="info-value">Jessica Thompson</div></div>
+            <div class="info-item"><div class="info-label">Incorporated</div><div class="info-value">May 1, 2026</div></div>
+            <div class="info-item"><div class="info-label">Services</div><div class="info-value">Financial Planning · Portfolio Management · Investment Advisory</div></div>
+          </div>
+          <div class="callout callout-gold mt-2">
+            <strong>📌 Accounting Basis</strong>
+            All transactions are recorded on the <em>accrual basis</em> in accordance with ICAI Framework. Revenue is recognised when earned; expenses when incurred — regardless of cash movement.
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Business Transactions</h2>
+        <div class="month-tabs">
+          <button class="month-btn active" onclick="switchMonth('may')">May 2026</button>
+          <button class="month-btn" onclick="switchMonth('jun')">June 2026</button>
+        </div>
+
+        <div id="panel-may" class="month-panel active">
+          <div class="content-block">
+            <h2>Transactions — May 2026</h2>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 1</div>
+              <div class="txn-body">
+                <strong>Jessica deposits ₹5,00,000 as capital contribution into bank account</strong>
+                <div class="txn-note">Initial equity injection to fund the business</div>
+                <div class="txn-acct"><span class="dr">Dr Bank ₹5,00,000</span><span class="cr">Cr Capital ₹5,00,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 2</div>
+              <div class="txn-body">
+                <strong>Registration &amp; legal fees — ₹10,000 paid in cash</strong>
+                <div class="txn-note">Incorporation expense — reduces equity immediately</div>
+                <div class="txn-acct"><span class="dr">Dr Legal Expense ₹10,000</span><span class="cr">Cr Bank ₹10,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 5</div>
+              <div class="txn-body">
+                <strong>Bank loan of ₹3,00,000 at 8% p.a.; interest payable monthly; principal repayable at any time</strong>
+                <div class="txn-note">Increases both assets (cash) and liabilities (loan)</div>
+                <div class="txn-acct"><span class="dr">Dr Bank ₹3,00,000</span><span class="cr">Cr Bank Loan ₹3,00,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 7</div>
+              <div class="txn-body">
+                <strong>12-month office lease: security deposit ₹1,00,000 paid; monthly rent ₹30,000 payable at month-end</strong>
+                <div class="txn-note">Deposit is an asset (refundable). Rent recognised at end of each month.</div>
+                <div class="txn-acct"><span class="dr">Dr Security Deposit ₹1,00,000</span><span class="cr">Cr Bank ₹1,00,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 10</div>
+              <div class="txn-body">
+                <strong>Office furniture purchased — ₹80,000 paid in full</strong>
+                <div class="txn-note">Asset swap: cash converts to fixed asset</div>
+                <div class="txn-acct"><span class="dr">Dr Furniture ₹80,000</span><span class="cr">Cr Bank ₹80,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 12</div>
+              <div class="txn-body">
+                <strong>Computer equipment purchased — ₹1,50,000 on credit (payable by end of June)</strong>
+                <div class="txn-note">Asset obtained now; liability to pay created</div>
+                <div class="txn-acct"><span class="dr">Dr Equipment ₹1,50,000</span><span class="cr">Cr Equipment Payable ₹1,50,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 15</div>
+              <div class="txn-body">
+                <strong>Office supplies purchased — ₹20,000 cash</strong>
+                <div class="txn-note">Recorded as asset initially; consumed portion expensed at month-end</div>
+                <div class="txn-acct"><span class="dr">Dr Office Supplies ₹20,000</span><span class="cr">Cr Bank ₹20,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 18</div>
+              <div class="txn-body">
+                <strong>Administrative assistant hired — salary ₹25,000/month, payable at month-end</strong>
+                <div class="txn-note">No journal entry yet — recognised when salary is earned (May 31)</div>
+                <div class="txn-acct"><span class="tag tag-gray" style="font-size:0.75rem;">Memo entry only</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 20</div>
+              <div class="txn-body">
+                <strong>Advisory services provided — ₹1,00,000 received in cash</strong>
+                <div class="txn-note">Revenue earned and received — increases equity</div>
+                <div class="txn-acct"><span class="dr">Dr Bank ₹1,00,000</span><span class="cr">Cr Service Revenue ₹1,00,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 22</div>
+              <div class="txn-body">
+                <strong>Rebecca Olsen pays ₹2,00,000 upfront for 4 advisory services over 1 year</strong>
+                <div class="txn-note">Cash received but service not rendered → Deferred Revenue (Liability) until each service is performed</div>
+                <div class="txn-acct"><span class="dr">Dr Bank ₹2,00,000</span><span class="cr">Cr Deferred Revenue ₹2,00,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 25</div>
+              <div class="txn-body">
+                <strong>Additional office supplies — ₹30,000 on credit (payable by end of June)</strong>
+                <div class="txn-acct"><span class="dr">Dr Office Supplies ₹30,000</span><span class="cr">Cr Supplies Payable ₹30,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 31</div>
+              <div class="txn-body">
+                <strong>Supplies consumed during May — ₹24,000</strong>
+                <div class="txn-note">Total supplies: ₹50,000; consumed: ₹24,000; remaining: ₹26,000</div>
+                <div class="txn-acct"><span class="dr">Dr Supplies Expense ₹24,000</span><span class="cr">Cr Office Supplies ₹24,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">May 31</div>
+              <div class="txn-body">
+                <strong>All payments honoured: Rent ₹30,000 + Utility bills ₹8,000</strong>
+                <div class="txn-note">Salary of ₹25,000 accrued but NOT paid — payable next month</div>
+                <div class="txn-acct">
+                  <span class="dr">Dr Rent Expense ₹30,000</span><span class="cr">Cr Bank ₹38,000</span>
+                  <span class="dr">Dr Utility Expense ₹8,000</span>
+                  <span class="dr">Dr Salary Expense ₹25,000</span><span class="cr">Cr Salary Payable ₹25,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-jun" class="month-panel">
+          <div class="content-block">
+            <h2>Transactions — June 2026</h2>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">Jun 1</div>
+              <div class="txn-body">
+                <strong>Financial planning services rendered — ₹2,50,000 earned</strong>
+                <div class="txn-acct"><span class="dr">Dr Bank ₹2,50,000</span><span class="cr">Cr Service Revenue ₹2,50,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">Jun 10</div>
+              <div class="txn-body">
+                <strong>Order received for portfolio management services — ₹1,50,000</strong>
+                <div class="txn-note">Order received but service not yet performed — recognised when service is rendered</div>
+                <div class="txn-acct"><span class="tag tag-gray" style="font-size:0.75rem;">Memo entry — no accounting entry yet</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">Jun 15</div>
+              <div class="txn-body">
+                <strong>First advisory service provided to Rebecca Olsen (1 of 4 services)</strong>
+                <div class="txn-note">₹2,00,000 ÷ 4 = ₹50,000 per service. Deferred Revenue is now earned.</div>
+                <div class="txn-acct"><span class="dr">Dr Deferred Revenue ₹50,000</span><span class="cr">Cr Service Revenue ₹50,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">Jun 20</div>
+              <div class="txn-body">
+                <strong>Payment made for computer equipment purchased in May — ₹1,50,000</strong>
+                <div class="txn-note">Settles the liability created on May 12</div>
+                <div class="txn-acct"><span class="dr">Dr Equipment Payable ₹1,50,000</span><span class="cr">Cr Bank ₹1,50,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">Jun 25</div>
+              <div class="txn-body">
+                <strong>Monthly interest on bank loan — ₹2,000 paid (₹3,00,000 × 8% ÷ 12)</strong>
+                <div class="txn-acct"><span class="dr">Dr Interest Expense ₹2,000</span><span class="cr">Cr Bank ₹2,000</span></div>
+              </div>
+            </div>
+
+            <div class="txn-full">
+              <div class="txn-date-badge">Jun 30</div>
+              <div class="txn-body">
+                <strong>All June payments honoured: Rent ₹30,000, Utilities ₹12,000, Salary ₹50,000 (May + June arrears), Supplies Payable ₹30,000</strong>
+                <div class="txn-acct">
+                  <span class="dr">Dr Rent Expense ₹30,000</span>
+                  <span class="dr">Dr Utility Expense ₹12,000</span>
+                  <span class="dr">Dr Salary Expense ₹25,000</span>
+                  <span class="dr">Dr Salary Payable ₹25,000</span>
+                  <span class="dr">Dr Supplies Payable ₹30,000</span>
+                  <span class="cr">Cr Bank ₹1,22,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Financial Statements</h2>
+        <p class="section-subtitle">Select a month to view the Income Statement and Balance Sheet</p>
+        <div class="month-tabs">
+          <button class="month-btn active" onclick="switchFS('may')">May 2026</button>
+          <button class="month-btn" onclick="switchFS('jun')">June 2026</button>
+        </div>
+
+        <div id="fs-may" class="month-panel active">
+          <div class="fs-wrapper">
+            <div class="fs-card">
+              <div class="fs-card-header">
+                <h3>Income Statement</h3>
+                <p>WealthAdvisors LLP &nbsp;·&nbsp; Month ended 31 May 2026</p>
+              </div>
+              <div class="fs-body">
+                <div class="fs-row section-head"><span>Revenue</span><span></span></div>
+                <div class="fs-row"><span class="indent">Service Revenue</span><span class="amount">₹ 1,00,000</span></div>
+                <div class="fs-row subtotal"><span>Total Revenue</span><span>₹ 1,00,000</span></div>
+                <div class="fs-row section-head"><span>Expenses</span><span></span></div>
+                <div class="fs-row"><span class="indent">Legal &amp; Registration Fees</span><span class="amount neg">₹ 10,000</span></div>
+                <div class="fs-row"><span class="indent">Rent Expense</span><span class="amount neg">₹ 30,000</span></div>
+                <div class="fs-row"><span class="indent">Salary Expense</span><span class="amount neg">₹ 25,000</span></div>
+                <div class="fs-row"><span class="indent">Utility Expense</span><span class="amount neg">₹ 8,000</span></div>
+                <div class="fs-row"><span class="indent">Supplies Expense</span><span class="amount neg">₹ 24,000</span></div>
+                <div class="fs-row subtotal"><span>Total Expenses</span><span class="neg">₹ 97,000</span></div>
+                <div class="fs-row total"><span>Net Income (May)</span><span class="pos" style="color:#86efac;">₹ 3,000</span></div>
+              </div>
+            </div>
+            <div class="fs-card">
+              <div class="fs-card-header">
+                <h3>Balance Sheet</h3>
+                <p>WealthAdvisors LLP &nbsp;·&nbsp; As at 31 May 2026</p>
+              </div>
+              <div class="fs-body">
+                <div class="fs-row section-head"><span>Assets</span><span></span></div>
+                <div class="fs-row"><span class="indent">Cash / Bank</span><span class="amount">₹ 3,72,000</span></div>
+                <div class="fs-row"><span class="indent">Security Deposit</span><span class="amount">₹ 1,00,000</span></div>
+                <div class="fs-row"><span class="indent">Office Furniture</span><span class="amount">₹ 80,000</span></div>
+                <div class="fs-row"><span class="indent">Computer Equipment</span><span class="amount">₹ 1,50,000</span></div>
+                <div class="fs-row"><span class="indent">Office Supplies</span><span class="amount">₹ 26,000</span></div>
+                <div class="fs-row subtotal"><span>Total Assets</span><span>₹ 7,28,000</span></div>
+                <div class="fs-row section-head"><span>Liabilities</span><span></span></div>
+                <div class="fs-row"><span class="indent">Bank Loan</span><span class="amount">₹ 3,00,000</span></div>
+                <div class="fs-row"><span class="indent">Equipment Payable</span><span class="amount">₹ 1,50,000</span></div>
+                <div class="fs-row"><span class="indent">Supplies Payable</span><span class="amount">₹ 30,000</span></div>
+                <div class="fs-row"><span class="indent">Salary Payable</span><span class="amount">₹ 25,000</span></div>
+                <div class="fs-row"><span class="indent">Deferred Revenue</span><span class="amount">₹ 1,50,000</span></div>
+                <div class="fs-row subtotal"><span>Total Liabilities</span><span>₹ 6,55,000</span></div>
+                <div class="fs-row section-head"><span>Equity</span><span></span></div>
+                <div class="fs-row"><span class="indent">Capital</span><span class="amount">₹ 5,00,000</span></div>
+                <div class="fs-row"><span class="indent">Retained Earnings (Net Income)</span><span class="amount">₹ 3,000</span></div>
+                <div class="fs-row"><span class="indent">Less: Advance used as Deferred Rev.</span><span class="amount neg">−₹ 30,000</span></div>
+                <div class="fs-row subtotal"><span>Total Equity</span><span>₹ 73,000</span></div>
+                <div class="fs-row total"><span>Total Liabilities + Equity</span><span>₹ 7,28,000</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="callout callout-gold mt-2">
+            <strong>🔍 Note on Deferred Revenue</strong>
+            Rebecca Olsen's ₹2,00,000 advance is for 4 services. Only the services rendered in May would be earned revenue. Since no service was rendered in May (the first service is performed on June 15), the full ₹2,00,000 remains as <em>Deferred Revenue</em> (liability) on the May Balance Sheet.
+          </div>
+        </div>
+
+        <div id="fs-jun" class="month-panel">
+          <div class="fs-wrapper">
+            <div class="fs-card">
+              <div class="fs-card-header">
+                <h3>Income Statement</h3>
+                <p>WealthAdvisors LLP &nbsp;·&nbsp; Month ended 30 June 2026</p>
+              </div>
+              <div class="fs-body">
+                <div class="fs-row section-head"><span>Revenue</span><span></span></div>
+                <div class="fs-row"><span class="indent">Financial Planning Services</span><span class="amount">₹ 2,50,000</span></div>
+                <div class="fs-row"><span class="indent">Rebecca Olsen — 1st Service</span><span class="amount">₹ 50,000</span></div>
+                <div class="fs-row subtotal"><span>Total Revenue</span><span>₹ 3,00,000</span></div>
+                <div class="fs-row section-head"><span>Expenses</span><span></span></div>
+                <div class="fs-row"><span class="indent">Rent Expense</span><span class="amount neg">₹ 30,000</span></div>
+                <div class="fs-row"><span class="indent">Salary Expense (June)</span><span class="amount neg">₹ 25,000</span></div>
+                <div class="fs-row"><span class="indent">Utility Expense</span><span class="amount neg">₹ 12,000</span></div>
+                <div class="fs-row"><span class="indent">Interest Expense</span><span class="amount neg">₹ 2,000</span></div>
+                <div class="fs-row subtotal"><span>Total Expenses</span><span class="neg">₹ 69,000</span></div>
+                <div class="fs-row total"><span>Net Income (June)</span><span style="color:#86efac;">₹ 2,31,000</span></div>
+              </div>
+            </div>
+            <div class="fs-card">
+              <div class="fs-card-header">
+                <h3>Balance Sheet</h3>
+                <p>WealthAdvisors LLP &nbsp;·&nbsp; As at 30 June 2026</p>
+              </div>
+              <div class="fs-body">
+                <div class="fs-row section-head"><span>Assets</span><span></span></div>
+                <div class="fs-row"><span class="indent">Cash / Bank</span><span class="amount">₹ 5,20,000</span></div>
+                <div class="fs-row"><span class="indent">Security Deposit</span><span class="amount">₹ 1,00,000</span></div>
+                <div class="fs-row"><span class="indent">Office Furniture</span><span class="amount">₹ 80,000</span></div>
+                <div class="fs-row"><span class="indent">Computer Equipment</span><span class="amount">₹ 1,50,000</span></div>
+                <div class="fs-row"><span class="indent">Office Supplies (remaining)</span><span class="amount">₹ 26,000</span></div>
+                <div class="fs-row subtotal"><span>Total Assets</span><span>₹ 8,76,000</span></div>
+                <div class="fs-row section-head"><span>Liabilities</span><span></span></div>
+                <div class="fs-row"><span class="indent">Bank Loan</span><span class="amount">₹ 3,00,000</span></div>
+                <div class="fs-row"><span class="indent">Deferred Revenue (3 services remaining)</span><span class="amount">₹ 1,50,000</span></div>
+                <div class="fs-row subtotal"><span>Total Liabilities</span><span>₹ 4,50,000</span></div>
+                <div class="fs-row section-head"><span>Equity</span><span></span></div>
+                <div class="fs-row"><span class="indent">Capital</span><span class="amount">₹ 5,00,000</span></div>
+                <div class="fs-row"><span class="indent">Retained Earnings (May)</span><span class="amount">₹ 3,000</span></div>
+                <div class="fs-row"><span class="indent">Net Income (June)</span><span class="amount">₹ 2,31,000</span></div>
+                <div class="fs-row subtotal"><span>Total Equity</span><span>₹ 7,34,000</span></div>
+                <div class="fs-row total"><span>Total Liabilities + Equity</span><span>₹ 11,84,000</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="callout callout-blue mt-2">
+            <strong>📌 Bank Balance — June Calculation</strong>
+            Opening bank (May end): ₹3,72,000 + Revenue received ₹2,50,000 − Equipment payable paid ₹1,50,000 − Interest ₹2,000 − Rent ₹30,000 − Utilities ₹12,000 − Salaries ₹50,000 − Supplies payable ₹30,000 = ₹5,48,000.
+          </div>
+          <div class="callout callout-maroon mt-1">
+            <strong>📌 June 10 Order — Not Yet Recognised</strong>
+            The ₹1,50,000 portfolio management order received on June 10 is NOT recognised as revenue in June because the services have not yet been rendered (accrual basis). It will be recognised when performed.
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Key Accounting Concepts Applied in This Case</h2>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon">📅</div>
+            <h3>Accrual Basis</h3>
+            <p>Salary for May is recognised as an expense on May 31 (when earned by the employee) even though it was paid in June.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🔄</div>
+            <h3>Deferred Revenue</h3>
+            <p>Rebecca Olsen's advance is a <em>liability</em> until each service is performed. ₹50,000 is earned per service rendered.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚖️</div>
+            <h3>Matching Principle</h3>
+            <p>Supplies consumed (₹24,000) are expensed in the period they are used, not when purchased — matching cost with benefit.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🏢</div>
+            <h3>Going Concern</h3>
+            <p>Assets like furniture and equipment are recorded at cost, not liquidation value — the firm is expected to continue operating.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="text-center">
+        <div class="btn-row">
+          <button class="btn-outline" onclick="showPage('equation')">← Accounting Equation</button>
+          <button class="btn-primary" onclick="showPage('home')">↩ Back to Home</button>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /page-casestudy -->
+
+
+  <!-- ═══════════════════════════════════════════
+       PAGE: FORMS OF ORGANISATION
+  ════════════════════════════════════════════ -->
+  <div id="page-orgforms" class="page">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge">Indian Business Law &nbsp;·&nbsp; Forms of Organisation</div>
+        <h1>Forms of Business<br><span>Organisation in India</span></h1>
+        <p>From a sole proprietor to a listed public company — each form has its own legal structure, member limits, liability profile, and suitability. All governed under Indian law.</p>
+      </div>
+    </section>
+    <div class="gold-line"></div>
+
+    <main>
+
+      <!-- Quick Comparison Table -->
+      <section>
+        <h2 class="section-title">Quick Comparison</h2>
+        <p class="section-subtitle">At a glance — members, liability, and governing law</p>
+        <div style="overflow-x:auto;">
+          <table class="session-table" style="min-width:720px;">
+            <thead>
+              <tr>
+                <th>Form</th>
+                <th>Governing Law</th>
+                <th style="text-align:center;">Min Members</th>
+                <th style="text-align:center;">Max Members</th>
+                <th>Liability</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sole Proprietorship</strong></td>
+                <td>No specific Act; general laws apply</td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--maroon);">1</span></td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--gray-500);">1</span></td>
+                <td><span class="tag tag-maroon">Unlimited</span></td>
+              </tr>
+              <tr>
+                <td><strong>Hindu Undivided Family (HUF)</strong></td>
+                <td>Hindu Succession Act &amp; Hindu Law</td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--maroon);">2</span></td>
+                <td style="text-align:center;"><span class="tag tag-gray">No limit</span></td>
+                <td><span class="tag tag-maroon">Karta: Unlimited<br>Coparceners: Limited</span></td>
+              </tr>
+              <tr>
+                <td><strong>Partnership Firm</strong></td>
+                <td>Indian Partnership Act, 1932</td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--maroon);">2</span></td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--gold);color:var(--maroon-dark);">50</span></td>
+                <td><span class="tag tag-maroon">Unlimited, Joint &amp; Several</span></td>
+              </tr>
+              <tr>
+                <td><strong>Limited Liability Partnership (LLP)</strong></td>
+                <td>LLP Act, 2008</td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--maroon);">2</span></td>
+                <td style="text-align:center;"><span class="tag tag-gray">No limit</span></td>
+                <td><span class="tag tag-gold">Limited</span></td>
+              </tr>
+              <tr>
+                <td><strong>One Person Company (OPC)</strong></td>
+                <td>Companies Act, 2013 — Sec 2(62)</td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--maroon);">1</span></td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--gray-500);">1</span></td>
+                <td><span class="tag tag-gold">Limited</span></td>
+              </tr>
+              <tr>
+                <td><strong>Private Limited Company</strong></td>
+                <td>Companies Act, 2013</td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--maroon);">2</span></td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--gold);color:var(--maroon-dark);">200</span></td>
+                <td><span class="tag tag-gold">Limited</span></td>
+              </tr>
+              <tr>
+                <td><strong>Public Limited Company</strong></td>
+                <td>Companies Act, 2013</td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--maroon);">7</span></td>
+                <td style="text-align:center;"><span class="tag tag-gray">No limit</span></td>
+                <td><span class="tag tag-gold">Limited</span></td>
+              </tr>
+              <tr>
+                <td><strong>Co-operative Society</strong></td>
+                <td>Co-operative Societies Act, 1912 / State Acts</td>
+                <td style="text-align:center;"><span class="session-num" style="background:var(--maroon);">10</span></td>
+                <td style="text-align:center;"><span class="tag tag-gray">Per bye-laws</span></td>
+                <td><span class="tag tag-gold">Limited (usually)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-gold mt-2">
+          <strong>📌 Directors vs Shareholders</strong>
+          For companies under the Companies Act 2013, "members" refers to shareholders. Director counts are separate: Private Ltd requires min 2 directors; Public Ltd requires min 3 directors; OPC requires min 1 director. At least one director must be a resident of India in all cases.
+        </div>
+      </section>
+
+      <!-- Detailed Cards -->
+      <section>
+        <h2 class="section-title">Detailed Overview</h2>
+        <p class="section-subtitle">Legal structure, suitability, and key features of each form</p>
+
+        <!-- Sole Proprietorship -->
+        <div class="content-block" style="border-left:4px solid var(--maroon);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <h2 style="margin:0;">🧑‍💼 Sole Proprietorship</h2>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <span class="tag tag-maroon">Min: 1</span>
+              <span class="tag tag-maroon">Max: 1</span>
+              <span class="tag tag-gray">Unlimited Liability</span>
+            </div>
+          </div>
+          <p>The simplest and oldest form of business organisation. The owner and business are the same legal person — there is no distinction between personal and business assets.</p>
+          <div class="info-grid" style="margin-top:0.75rem;">
+            <div class="info-item"><div class="info-label">Governing Law</div><div class="info-value">No specific Act; governed by general laws &amp; tax regulations</div></div>
+            <div class="info-item"><div class="info-label">Registration</div><div class="info-value">Not mandatory; MSME/Shop &amp; Establishment Act registration optional</div></div>
+            <div class="info-item"><div class="info-label">Taxation</div><div class="info-value">Income taxed as personal income of the proprietor</div></div>
+            <div class="info-item"><div class="info-label">Continuity</div><div class="info-value">Ceases on owner's death or insolvency — no perpetual succession</div></div>
+          </div>
+          <div class="callout callout-gold" style="margin-top:0.75rem;">
+            <strong>✅ Best Suited For</strong>
+            Small retail shops, street vendors, local service providers, freelancers, and artisans. Ideal when simplicity, low cost, and full control matter more than liability protection. Examples: a local kirana store, a tuition teacher, a small tailor shop.
+          </div>
+        </div>
+
+        <!-- HUF -->
+        <div class="content-block" style="border-left:4px solid var(--gold);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <h2 style="margin:0;">🏠 Hindu Undivided Family (HUF)</h2>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <span class="tag tag-maroon">Min: 2</span>
+              <span class="tag tag-gray">Max: No limit</span>
+              <span class="tag tag-maroon">Karta: Unlimited</span>
+            </div>
+          </div>
+          <p>A unique form recognised only under Indian (Hindu) law. The family as a unit carries on business. The senior-most male member (or female, post-2005) is the <strong>Karta</strong> who manages the business; other members are <strong>coparceners</strong>.</p>
+          <div class="info-grid" style="margin-top:0.75rem;">
+            <div class="info-item"><div class="info-label">Governing Law</div><div class="info-value">Hindu Succession Act, 1956; Hindu Law (Mitakshara / Dayabhaga schools)</div></div>
+            <div class="info-item"><div class="info-label">Registration</div><div class="info-value">Not required; PAN registration with Income Tax Department needed</div></div>
+            <div class="info-item"><div class="info-label">Taxation</div><div class="info-value">Taxed separately as a distinct assessee under Income Tax Act — key tax advantage</div></div>
+            <div class="info-item"><div class="info-label">Membership</div><div class="info-value">Automatic — all Hindu lineal descendants of a common ancestor; wives &amp; daughters included post-2005</div></div>
+          </div>
+          <div class="callout callout-gold" style="margin-top:0.75rem;">
+            <strong>✅ Best Suited For</strong>
+            Traditional family businesses in agriculture, trading, and manufacturing. Widely used for tax planning — HUF income is taxed separately, effectively splitting the family's tax burden. Examples: agricultural land cultivation, ancestral jewellery businesses.
+          </div>
+        </div>
+
+        <!-- Partnership -->
+        <div class="content-block" style="border-left:4px solid var(--maroon);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <h2 style="margin:0;">🤝 Partnership Firm</h2>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <span class="tag tag-maroon">Min: 2</span>
+              <span class="tag tag-gold">Max: 50</span>
+              <span class="tag tag-maroon">Unlimited Liability</span>
+            </div>
+          </div>
+          <p>Two or more persons agree to share profits of a business carried on by all or any one of them acting for all. Each partner is an agent of the firm and of fellow partners. Liability is <em>joint and several</em> — a creditor can sue any one partner for the entire debt.</p>
+          <div class="info-grid" style="margin-top:0.75rem;">
+            <div class="info-item"><div class="info-label">Governing Law</div><div class="info-value">Indian Partnership Act, 1932</div></div>
+            <div class="info-item"><div class="info-label">Registration</div><div class="info-value">Optional but strongly advisable — unregistered firms cannot sue third parties</div></div>
+            <div class="info-item"><div class="info-label">Max Members</div><div class="info-value">50 (Companies Act 2013, Sec 464); banking partnerships capped at 10</div></div>
+            <div class="info-item"><div class="info-label">Taxation</div><div class="info-value">Firm taxed at flat 30% + surcharge; partners' share exempt in their hands</div></div>
+          </div>
+          <div class="callout callout-gold" style="margin-top:0.75rem;">
+            <strong>✅ Best Suited For</strong>
+            Small and medium trading businesses, professional practices (doctor clinics, consultancies), and family-run enterprises where partners bring complementary skills. Examples: a law firm, a medical clinic, a small manufacturing unit.
+          </div>
+        </div>
+
+        <!-- LLP -->
+        <div class="content-block" style="border-left:4px solid var(--maroon-light);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <h2 style="margin:0;">⚖️ Limited Liability Partnership (LLP)</h2>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <span class="tag tag-maroon">Min: 2 Designated Partners</span>
+              <span class="tag tag-gray">Max: No limit</span>
+              <span class="tag tag-gold">Limited Liability</span>
+            </div>
+          </div>
+          <p>A hybrid form combining the flexibility of a partnership with the limited liability of a company. Each partner's liability is limited to their agreed contribution. Partners are not liable for the wrongful acts of other partners — a key advantage over ordinary partnership.</p>
+          <div class="info-grid" style="margin-top:0.75rem;">
+            <div class="info-item"><div class="info-label">Governing Law</div><div class="info-value">Limited Liability Partnership Act, 2008</div></div>
+            <div class="info-item"><div class="info-label">Designated Partners</div><div class="info-value">Min 2; at least one must be a resident Indian; responsible for regulatory compliance</div></div>
+            <div class="info-item"><div class="info-label">Taxation</div><div class="info-value">Taxed like a partnership firm — 30% flat rate; no dividend distribution tax</div></div>
+            <div class="info-item"><div class="info-label">Separate Legal Entity</div><div class="info-value">Yes — LLP can own property, sue &amp; be sued in its own name</div></div>
+          </div>
+          <div class="callout callout-gold" style="margin-top:0.75rem;">
+            <strong>✅ Best Suited For</strong>
+            Professional service firms — CA firms, Company Secretaries, law firms, architecture firms, management consultancies, and startups seeking limited liability without heavy company compliance. ICAI mandates CA firms with more than 2 partners to register as LLPs.
+          </div>
+        </div>
+
+        <!-- OPC -->
+        <div class="content-block" style="border-left:4px solid var(--gold);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <h2 style="margin:0;">👤 One Person Company (OPC)</h2>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <span class="tag tag-maroon">Min: 1</span>
+              <span class="tag tag-gray">Max: 1 Shareholder</span>
+              <span class="tag tag-gold">Limited Liability</span>
+            </div>
+          </div>
+          <p>Introduced by the Companies Act 2013 to give solo entrepreneurs the benefits of a company structure. Requires a single shareholder and one nominee (who takes over if the shareholder dies or becomes incapacitated). Minimum 1 director required.</p>
+          <div class="info-grid" style="margin-top:0.75rem;">
+            <div class="info-item"><div class="info-label">Governing Law</div><div class="info-value">Companies Act, 2013 — Section 2(62)</div></div>
+            <div class="info-item"><div class="info-label">Eligibility</div><div class="info-value">Only natural persons who are Indian citizens &amp; residents; NRIs allowed since April 2021</div></div>
+            <div class="info-item"><div class="info-label">Conversion</div><div class="info-value">Must convert to Private Ltd once paid-up capital exceeds ₹50 lakhs or turnover exceeds ₹2 crores</div></div>
+            <div class="info-item"><div class="info-label">Taxation</div><div class="info-value">Taxed as a company — base rate 22% (for existing cos) or 25% (new cos under Sec 115BAB)</div></div>
+          </div>
+          <div class="callout callout-gold" style="margin-top:0.75rem;">
+            <strong>✅ Best Suited For</strong>
+            Solo entrepreneurs and freelancers who want corporate credibility, limited liability, and easier access to institutional credit — without taking on a co-founder. Examples: a solo IT consultant, a single-person e-commerce seller, an independent financial advisor.
+          </div>
+        </div>
+
+        <!-- Private Limited -->
+        <div class="content-block" style="border-left:4px solid var(--maroon);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <h2 style="margin:0;">🏢 Private Limited Company</h2>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <span class="tag tag-maroon">Min: 2 Members, 2 Directors</span>
+              <span class="tag tag-gold">Max: 200 Members</span>
+              <span class="tag tag-gold">Limited Liability</span>
+            </div>
+          </div>
+          <p>The most popular form for startups and growing businesses. Restricts the right to transfer shares and prohibits public invitation to subscribe to shares. Has a separate legal identity from its owners — the company can own property, enter contracts, and continue to exist regardless of changes in ownership.</p>
+          <div class="info-grid" style="margin-top:0.75rem;">
+            <div class="info-item"><div class="info-label">Governing Law</div><div class="info-value">Companies Act, 2013 — Section 2(68)</div></div>
+            <div class="info-item"><div class="info-label">Directors</div><div class="info-value">Min 2, Max 15 (can be increased by special resolution); at least 1 resident Indian director</div></div>
+            <div class="info-item"><div class="info-label">Share Transfer</div><div class="info-value">Restricted — must be approved by existing shareholders; cannot be listed on a stock exchange</div></div>
+            <div class="info-item"><div class="info-label">Compliance</div><div class="info-value">Annual ROC filings, audited accounts, board meetings mandatory; less disclosure than public company</div></div>
+          </div>
+          <div class="callout callout-gold" style="margin-top:0.75rem;">
+            <strong>✅ Best Suited For</strong>
+            Tech startups, family businesses seeking growth capital, subsidiaries of foreign companies, and any enterprise planning VC/PE funding. The preferred structure for investors because equity can be issued, transferred, and pledged easily. Examples: Flipkart (early stage), Zomato (pre-IPO), most Indian IT startups.
+          </div>
+        </div>
+
+        <!-- Public Limited -->
+        <div class="content-block" style="border-left:4px solid var(--maroon-light);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <h2 style="margin:0;">🏛️ Public Limited Company</h2>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <span class="tag tag-maroon">Min: 7 Members, 3 Directors</span>
+              <span class="tag tag-gray">Max: No limit</span>
+              <span class="tag tag-gold">Limited Liability</span>
+            </div>
+          </div>
+          <p>Can invite the general public to subscribe to its shares and debentures. Shares are freely transferable. Must add "Limited" or "Ltd" to its name. Listed public companies are regulated additionally by SEBI (Securities and Exchange Board of India).</p>
+          <div class="info-grid" style="margin-top:0.75rem;">
+            <div class="info-item"><div class="info-label">Governing Law</div><div class="info-value">Companies Act, 2013; SEBI Act, 1992 (for listed companies)</div></div>
+            <div class="info-item"><div class="info-label">Share Transfer</div><div class="info-value">Freely transferable; can be listed on BSE / NSE for public trading</div></div>
+            <div class="info-item"><div class="info-label">Capital Raising</div><div class="info-value">Can issue IPO, FPO, bonds &amp; debentures to the general public</div></div>
+            <div class="info-item"><div class="info-label">Disclosure</div><div class="info-value">High disclosure requirements — quarterly results, annual reports, SEBI filings mandatory for listed companies</div></div>
+          </div>
+          <div class="callout callout-gold" style="margin-top:0.75rem;">
+            <strong>✅ Best Suited For</strong>
+            Large enterprises requiring substantial capital from the public, companies planning stock exchange listing, and businesses with broad public stakeholder interest. Offers maximum credibility and access to capital markets. Examples: Reliance Industries Ltd, Tata Consultancy Services Ltd, HDFC Bank Ltd.
+          </div>
+        </div>
+
+        <!-- Co-operative Society -->
+        <div class="content-block" style="border-left:4px solid var(--gold);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <h2 style="margin:0;">🌾 Co-operative Society</h2>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <span class="tag tag-maroon">Min: 10 Members</span>
+              <span class="tag tag-gray">Max: Per bye-laws</span>
+              <span class="tag tag-gold">Limited Liability</span>
+            </div>
+          </div>
+          <p>Voluntary association of persons working together for mutual economic benefit. Based on the principle of <em>"one member, one vote"</em> — regardless of the number of shares held. Surplus is distributed as dividends in proportion to members' participation (patronage), not share capital.</p>
+          <div class="info-grid" style="margin-top:0.75rem;">
+            <div class="info-item"><div class="info-label">Governing Law</div><div class="info-value">Co-operative Societies Act, 1912; State Co-operative Acts; Multi-State Co-operative Societies Act, 2002</div></div>
+            <div class="info-item"><div class="info-label">Registration</div><div class="info-value">Mandatory with the Registrar of Co-operative Societies of the respective state</div></div>
+            <div class="info-item"><div class="info-label">Management</div><div class="info-value">Elected management committee; democratic control — each member has one vote irrespective of shares</div></div>
+            <div class="info-item"><div class="info-label">Surplus Distribution</div><div class="info-value">Distributed as dividends &amp; patronage refunds; portion compulsorily transferred to reserves</div></div>
+          </div>
+          <div class="callout callout-gold" style="margin-top:0.75rem;">
+            <strong>✅ Best Suited For</strong>
+            Agricultural credit (PACS — Primary Agricultural Credit Societies), dairy cooperatives, housing societies, consumer stores, and weaver cooperatives. Where collective bargaining, shared resources, and mutual benefit matter more than profit maximisation. Examples: AMUL (Gujarat Co-operative Milk Marketing Federation), Saraswat Co-operative Bank, DDA Housing Cooperatives.
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Key Distinctions -->
+      <section>
+        <h2 class="section-title">Key Distinctions at a Glance</h2>
+        <div class="card-grid">
+          <div class="card" style="border-top:4px solid var(--maroon);">
+            <div class="card-icon">⚠️</div>
+            <h3>Unlimited vs Limited Liability</h3>
+            <p>Sole proprietorships, partnerships, and HUF Kartas face unlimited personal liability — creditors can attach personal assets. LLPs, companies, and OPCs protect personal assets beyond the invested capital.</p>
+          </div>
+          <div class="card" style="border-top:4px solid var(--gold);">
+            <div class="card-icon">📜</div>
+            <h3>Separate Legal Entity</h3>
+            <p>Only companies (Pvt Ltd, Public Ltd, OPC) and LLPs are separate legal entities. A partnership firm and sole proprietorship are NOT separate from their owners in the eyes of the law.</p>
+          </div>
+          <div class="card" style="border-top:4px solid var(--maroon-light);">
+            <div class="card-icon">♾️</div>
+            <h3>Perpetual Succession</h3>
+            <p>Companies and LLPs continue to exist irrespective of changes in ownership or the death of a member. Proprietorships and partnerships dissolve on the owner's/partner's death unless the partnership deed provides otherwise.</p>
+          </div>
+          <div class="card" style="border-top:4px solid var(--gold);">
+            <div class="card-icon">💰</div>
+            <h3>Capital Raising Ability</h3>
+            <p>Public Limited Companies have the greatest ability to raise capital (IPO, bonds, public deposits). Private Ltd comes next (VC/PE). Proprietorships and HUFs are largely limited to owner funds and bank loans.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="text-center">
+        <div class="btn-row">
+          <button class="btn-primary" onclick="showPage('framework')">Explore ICAI Framework →</button>
+          <button class="btn-outline" onclick="showPage('home')">↩ Back to Home</button>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /page-orgforms -->
+
+
+  <!-- ═══════════════════════════════════════════
+       PAGE: ELEMENT GAME
+  ════════════════════════════════════════════ -->
+  <div id="page-game" class="page">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge">Interactive Learning &nbsp;·&nbsp; WealthAdvisors LLP</div>
+        <h1>Transaction<br><span>Element Challenge</span></h1>
+        <p>17 real transactions from the WealthAdvisors case. For each one, select all financial elements that are impacted. Get instant feedback and see your accuracy breakdown at the end.</p>
+      </div>
+    </section>
+    <div class="gold-line"></div>
+
+    <!-- START SCREEN -->
+    <div id="game-start" style="max-width:680px;margin:3rem auto;padding:0 1.5rem;">
+      <div style="background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:2.5rem;border:1px solid var(--gray-200);">
+        <div style="text-align:center;margin-bottom:1.5rem;">
+          <div style="font-size:3rem;margin-bottom:0.5rem;">🎮</div>
+          <h2 style="color:var(--maroon-dark);font-size:1.3rem;margin-bottom:0.25rem;">How to Play</h2>
+          <p style="color:var(--gray-500);font-size:0.88rem;">17 transactions · Instant feedback · Results analytics</p>
+        </div>
+        <div style="display:grid;gap:0.85rem;margin-bottom:1.5rem;">
+          <div style="display:flex;gap:0.85rem;align-items:flex-start;">
+            <span style="background:var(--maroon);color:white;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;">1</span>
+            <p style="margin:0;font-size:0.9rem;line-height:1.5;">Read each transaction from the WealthAdvisors LLP case carefully.</p>
+          </div>
+          <div style="display:flex;gap:0.85rem;align-items:flex-start;">
+            <span style="background:var(--maroon);color:white;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;">2</span>
+            <p style="margin:0;font-size:0.9rem;line-height:1.5;">Click <strong>all</strong> financial elements that are impacted — you can select multiple.</p>
+          </div>
+          <div style="display:flex;gap:0.85rem;align-items:flex-start;">
+            <span style="background:var(--maroon);color:white;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;">3</span>
+            <p style="margin:0;font-size:0.9rem;line-height:1.5;">Submit to see the correct answer, journal entry, and explanation.</p>
+          </div>
+          <div style="display:flex;gap:0.85rem;align-items:flex-start;">
+            <span style="background:var(--maroon);color:white;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;">4</span>
+            <p style="margin:0;font-size:0.9rem;line-height:1.5;">At the end, see your score, grade, and per-element accuracy breakdown.</p>
+          </div>
+        </div>
+        <div style="background:var(--gray-100);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;">
+          <p style="margin:0 0 0.5rem;font-size:0.78rem;font-weight:700;color:var(--gray-700);text-transform:uppercase;letter-spacing:0.06em;">The 5 Financial Elements</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <span class="tag tag-maroon">🏦 Assets</span>
+            <span class="tag tag-maroon">📋 Liabilities</span>
+            <span class="tag tag-gold">💰 Equity</span>
+            <span class="tag tag-gold">📈 Income</span>
+            <span class="tag tag-gray">💸 Expenses</span>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <button onclick="startGame()" class="btn-primary" style="font-size:1rem;padding:0.9rem 3rem;">Start Challenge →</button>
         </div>
       </div>
     </div>
-  </section>
-  <div class="gold-line"></div>
 
-  <main>
+    <!-- PLAY SCREEN -->
+    <div id="game-play" style="display:none;max-width:740px;margin:0 auto;padding:2rem 1.5rem;">
 
-    <!-- Learning Objectives -->
-    <section>
-      <h2 class="section-title">Learning Objectives</h2>
-      <p class="section-subtitle">By the end of this module, students will be able to:</p>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-icon">📋</div>
-          <h3>Understand the ICAI Framework</h3>
-          <p>Grasp the purpose and scope of the Framework for Preparation and Presentation of Financial Statements and its key qualitative characteristics.</p>
-          <a href="framework.html" class="card-link">Explore Framework →</a>
+      <!-- Header bar -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <span id="g-qnum" style="background:var(--maroon);color:white;font-weight:700;font-size:0.78rem;padding:0.25rem 0.75rem;border-radius:100px;">Q 1 / 17</span>
+          <span id="g-month" style="color:var(--gray-500);font-size:0.85rem;font-weight:500;">May 2026</span>
         </div>
-        <div class="card">
-          <div class="card-icon">⚖️</div>
-          <h3>Apply the Accounting Equation</h3>
-          <p>Record business transactions using Assets = Liabilities + Equity and understand how every transaction preserves the balance.</p>
-          <a href="accounting-equation.html" class="card-link">See the Equation →</a>
-        </div>
-        <div class="card">
-          <div class="card-icon">📊</div>
-          <h3>Prepare Financial Statements</h3>
-          <p>Construct an Income Statement and Balance Sheet from a series of transactions using the accrual basis of accounting.</p>
-          <a href="case-study.html" class="card-link">Open Case Study →</a>
-        </div>
-        <div class="card">
-          <div class="card-icon">👥</div>
-          <h3>Identify Stakeholders & Relevance</h3>
-          <p>Explain why enterprises prepare financial statements and how different stakeholder groups — investors, lenders, employees — use them.</p>
-          <a href="framework.html#users" class="card-link">View Stakeholders →</a>
+        <div style="display:flex;align-items:center;gap:0.5rem;">
+          <span style="font-size:0.78rem;color:var(--gray-500);">Score</span>
+          <span id="g-score" style="font-size:1rem;font-weight:800;color:var(--maroon);min-width:50px;text-align:right;">— / —</span>
         </div>
       </div>
-    </section>
 
-    <!-- Session Plan -->
-    <section>
-      <h2 class="section-title">Session Plan</h2>
-      <p class="section-subtitle">Four sessions covering theory, concepts, and applied practice</p>
-      <table class="session-table">
-        <thead>
-          <tr>
-            <th>Session</th>
-            <th>Topic</th>
-            <th>Key Concepts</th>
-            <th>Resource</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="session-num">1</span></td>
-            <td><strong>The Framework — Why Financial Statements?</strong><br>
-                <small style="color:#888">Forms of organisations · Purpose of reporting</small></td>
-            <td>
-              <span class="tag tag-maroon">Sole Proprietorship</span>
-              <span class="tag tag-maroon">Partnership</span>
-              <span class="tag tag-maroon">Corporation</span>
-            </td>
-            <td><a href="framework.html" style="color:var(--maroon);font-weight:600;font-size:0.82rem;">Framework →</a></td>
-          </tr>
-          <tr>
-            <td><span class="session-num">2</span></td>
-            <td><strong>Elements, Conventions &amp; Qualitative Characteristics</strong><br>
-                <small style="color:#888">What makes a financial statement useful?</small></td>
-            <td>
-              <span class="tag tag-gold">Relevance</span>
-              <span class="tag tag-gold">Reliability</span>
-              <span class="tag tag-gold">Comparability</span>
-            </td>
-            <td><a href="framework.html#characteristics" style="color:var(--maroon);font-weight:600;font-size:0.82rem;">Framework →</a></td>
-          </tr>
-          <tr>
-            <td><span class="session-num">3</span></td>
-            <td><strong>Notions of Income &amp; Wealth</strong><br>
-                <small style="color:#888">Stock vs Flow measures · Stakeholder relevance</small></td>
-            <td>
-              <span class="tag tag-gray">Income</span>
-              <span class="tag tag-gray">Wealth</span>
-              <span class="tag tag-gray">Accrual Basis</span>
-            </td>
-            <td><a href="framework.html#assumptions" style="color:var(--maroon);font-weight:600;font-size:0.82rem;">Framework →</a></td>
-          </tr>
-          <tr>
-            <td><span class="session-num">4</span></td>
-            <td><strong>The Accounting Equation in Practice</strong><br>
-                <small style="color:#888">WealthAdvisors LLP case · Building financial statements</small></td>
-            <td>
-              <span class="tag tag-maroon">A = L + E</span>
-              <span class="tag tag-gold">Income Statement</span>
-              <span class="tag tag-gold">Balance Sheet</span>
-            </td>
-            <td><a href="case-study.html" style="color:var(--maroon);font-weight:600;font-size:0.82rem;">Case Study →</a></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="callout callout-gold mt-2">
-        <strong>📝 Assessment</strong>
-        Sessions are followed by a case-based assignment on the preparation of financial statements.
+      <!-- Progress bar -->
+      <div style="background:var(--gray-200);border-radius:100px;height:5px;margin-bottom:1.5rem;overflow:hidden;">
+        <div id="g-progress" style="background:var(--maroon);height:100%;width:0%;transition:width 0.4s ease;border-radius:100px;"></div>
       </div>
-    </section>
 
-    <!-- Reading Materials -->
-    <section>
-      <h2 class="section-title">Reading Materials</h2>
-      <p class="section-subtitle">Primary references for this module</p>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-icon">📘</div>
-          <h3>ICAI Framework</h3>
-          <p>Framework for Preparation and Presentation of Financial Statements — issued by the Institute of Chartered Accountants of India. Covers components, objectives, qualitative characteristics, and measurement principles.</p>
-          <span class="tag tag-maroon">Primary Reading</span>
+      <!-- Transaction card -->
+      <div style="background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--gray-200);overflow:hidden;margin-bottom:1.5rem;">
+        <div style="background:linear-gradient(135deg,var(--maroon-dark),var(--maroon));padding:0.9rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <div id="g-date" style="background:rgba(255,255,255,0.15);border-radius:var(--radius);padding:0.3rem 0.75rem;color:var(--gold-light);font-size:0.8rem;font-weight:700;">May 1</div>
+          <span style="color:rgba(255,255,255,0.55);font-size:0.8rem;">WealthAdvisors LLP</span>
         </div>
-        <div class="card">
-          <div class="card-icon">📄</div>
-          <h3>Faculty Handout</h3>
-          <p>Introduction to Financial Accounting — faculty notes covering the accounting equation, financial elements, and worked examples using the WealthAdvisors LLP case.</p>
-          <span class="tag tag-gold">Supplementary</span>
+        <div style="padding:1.5rem;">
+          <p id="g-desc" style="font-size:0.97rem;line-height:1.75;color:var(--text);margin:0;"></p>
         </div>
       </div>
-    </section>
 
-    <!-- Quick Navigation -->
-    <section>
-      <h2 class="section-title">Explore the Module</h2>
-      <div class="card-grid">
-        <div class="card" style="border-top:4px solid var(--maroon);">
-          <h3>📋 ICAI Framework</h3>
-          <p>Components of financial statements, seven categories of users, three fundamental accounting assumptions, and five qualitative characteristics.</p>
-          <a href="framework.html" class="card-link">Go to Framework →</a>
-        </div>
-        <div class="card" style="border-top:4px solid var(--gold);">
-          <h3>⚖️ Accounting Equation</h3>
-          <p>Assets = Liabilities + Equity explained with step-by-step transaction walkthroughs from the WealthAdvisors case.</p>
-          <a href="accounting-equation.html" class="card-link">Go to Equation →</a>
-        </div>
-        <div class="card" style="border-top:4px solid var(--maroon-light);">
-          <h3>🏢 WealthAdvisors Case</h3>
-          <p>Full case study with May and June 2026 transactions, Income Statement, and Balance Sheet for each month.</p>
-          <a href="case-study.html" class="card-link">Go to Case Study →</a>
-        </div>
+      <!-- Prompt -->
+      <p style="text-align:center;font-weight:600;color:var(--maroon-dark);margin-bottom:0.85rem;font-size:0.9rem;">Which financial elements are impacted? <span style="font-weight:400;color:var(--gray-500);">(select all that apply)</span></p>
+
+      <!-- Element buttons -->
+      <div id="g-elements" style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.6rem;margin-bottom:1.5rem;"></div>
+
+      <!-- Action buttons -->
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <button id="g-submit" onclick="submitAnswer()" class="btn-primary" style="min-width:180px;">Submit Answer</button>
+        <button id="g-next"   onclick="nextQuestion()" class="btn-primary" style="display:none;min-width:180px;background:var(--maroon-dark);">Next →</button>
       </div>
-    </section>
 
-  </main>
+      <!-- Feedback -->
+      <div id="g-feedback" style="display:none;"></div>
+
+    </div><!-- /game-play -->
+
+    <!-- RESULTS SCREEN -->
+    <div id="game-results" style="display:none;max-width:740px;margin:0 auto;padding:2rem 1.5rem;">
+      <!-- filled by JS -->
+    </div>
+
+  </div><!-- /page-game -->
+
+  <script>
+  /* ─── GAME DATA ─────────────────────────────────────────── */
+  const GT = [
+    { no:1,  date:"May 1",  month:"May 2026",
+      desc:"Jessica Thompson deposits ₹5,00,000 from her personal savings into WealthAdvisors LLP's bank account as the initial capital contribution to start the business.",
+      correct:["Assets","Equity"],
+      expl:"Bank balance increases — <strong>Asset ↑</strong>. The owner's investment creates capital — <strong>Equity ↑</strong>. This is where the accounting equation A = L + E begins.",
+      journal:"Dr Bank ₹5,00,000 &nbsp;/&nbsp; Cr Capital ₹5,00,000" },
+    { no:2,  date:"May 2",  month:"May 2026",
+      desc:"Registration and legal fees of ₹10,000 are paid from the bank account to incorporate WealthAdvisors LLP.",
+      correct:["Assets","Expenses"],
+      expl:"Cash paid out reduces the bank — <strong>Asset ↓</strong>. Legal fees are a period cost — <strong>Expense ↑</strong>. Expenses reduce Equity indirectly via P&L, but the direct element impacted is Expenses.",
+      journal:"Dr Legal Expense ₹10,000 &nbsp;/&nbsp; Cr Bank ₹10,000" },
+    { no:3,  date:"May 5",  month:"May 2026",
+      desc:"WealthAdvisors takes a bank loan of ₹3,00,000 at 8% p.a. The loan proceeds are credited directly to the firm's bank account.",
+      correct:["Assets","Liabilities"],
+      expl:"Loan proceeds increase the bank — <strong>Asset ↑</strong>. The obligation to repay is a — <strong>Liability ↑</strong>. Both sides grow: A↑ = L↑ + E.",
+      journal:"Dr Bank ₹3,00,000 &nbsp;/&nbsp; Cr Bank Loan ₹3,00,000" },
+    { no:4,  date:"May 7",  month:"May 2026",
+      desc:"A refundable security deposit of ₹1,00,000 is paid from the bank account for a 12-month office lease agreement.",
+      correct:["Assets"],
+      expl:"This is an <em>asset swap</em> — Bank (Asset ↓) converts to Security Deposit (Asset ↑). <strong>Only Assets</strong> are affected; total asset value is unchanged. The deposit is refundable — not an expense.",
+      journal:"Dr Security Deposit ₹1,00,000 &nbsp;/&nbsp; Cr Bank ₹1,00,000" },
+    { no:5,  date:"May 10", month:"May 2026",
+      desc:"Office furniture is purchased for ₹80,000 and paid fully in cash from the bank account.",
+      correct:["Assets"],
+      expl:"Cash reduces (Asset ↓) but Furniture, a fixed asset, increases (Asset ↑). <strong>Only Assets</strong> affected — only the form changes, not the total. Classic asset swap.",
+      journal:"Dr Furniture ₹80,000 &nbsp;/&nbsp; Cr Bank ₹80,000" },
+    { no:6,  date:"May 12", month:"May 2026",
+      desc:"Computer equipment worth ₹1,50,000 is purchased on credit from a supplier — payable by end of June.",
+      correct:["Assets","Liabilities"],
+      expl:"Equipment received — <strong>Asset ↑</strong>. Payment deferred creates a payable — <strong>Liability ↑</strong>. A↑ = L↑ + E. Credit purchases always create a liability.",
+      journal:"Dr Equipment ₹1,50,000 &nbsp;/&nbsp; Cr Equipment Payable ₹1,50,000" },
+    { no:7,  date:"May 15", month:"May 2026",
+      desc:"Office supplies worth ₹20,000 are purchased and paid in cash. These supplies will be consumed over coming weeks.",
+      correct:["Assets"],
+      expl:"Bank reduces (Asset ↓), Office Supplies — a current asset — increases (Asset ↑). <strong>Only Assets</strong> affected. Under accrual accounting, supplies become an expense only when <em>consumed</em>, not when purchased.",
+      journal:"Dr Office Supplies ₹20,000 &nbsp;/&nbsp; Cr Bank ₹20,000" },
+    { no:8,  date:"May 20", month:"May 2026",
+      desc:"Advisory services are provided to a client — ₹1,00,000 received immediately in cash upon completion of service.",
+      correct:["Assets","Income"],
+      expl:"Cash received increases the bank — <strong>Asset ↑</strong>. Revenue earned is recognised — <strong>Income ↑</strong>. Income increases Equity via the P&L. First revenue for the firm!",
+      journal:"Dr Bank ₹1,00,000 &nbsp;/&nbsp; Cr Service Revenue ₹1,00,000" },
+    { no:9,  date:"May 22", month:"May 2026",
+      desc:"Rebecca Olsen pays ₹2,00,000 upfront for a package of 4 advisory services to be delivered over the next 12 months.",
+      correct:["Assets","Liabilities"],
+      expl:"Cash received — <strong>Asset ↑</strong>. BUT services NOT yet performed → Deferred Revenue — <strong>Liability ↑</strong>. Cash received ≠ Income. Under accrual basis, revenue is recognised only when the service is delivered.",
+      journal:"Dr Bank ₹2,00,000 &nbsp;/&nbsp; Cr Deferred Revenue ₹2,00,000" },
+    { no:10, date:"May 25", month:"May 2026",
+      desc:"Additional office supplies worth ₹30,000 are purchased on credit — payable to the supplier by end of June.",
+      correct:["Assets","Liabilities"],
+      expl:"Supplies received — <strong>Asset ↑</strong>. Not yet paid, payable created — <strong>Liability ↑</strong>. Same pattern as the equipment purchase on May 12.",
+      journal:"Dr Office Supplies ₹30,000 &nbsp;/&nbsp; Cr Supplies Payable ₹30,000" },
+    { no:11, date:"May 31", month:"May 2026",
+      desc:"Office supplies worth ₹24,000 have been consumed during May (out of total ₹50,000 purchased). The consumed portion is now written off.",
+      correct:["Assets","Expenses"],
+      expl:"Consumed supplies are no longer an asset — <strong>Asset ↓</strong>. Cost of supplies used is now an expense — <strong>Expense ↑</strong>. Matching principle: costs expensed in the period they benefit.",
+      journal:"Dr Supplies Expense ₹24,000 &nbsp;/&nbsp; Cr Office Supplies ₹24,000" },
+    { no:12, date:"May 31", month:"May 2026",
+      desc:"Rent ₹30,000 and utility bills ₹8,000 are paid from the bank. The assistant's May salary of ₹25,000 is earned but NOT paid yet — to be paid in June.",
+      correct:["Assets","Liabilities","Expenses"],
+      expl:"Rent + utilities paid: <strong>Asset ↓</strong> (Bank −₹38,000) + <strong>Expense ↑</strong>. Salary earned but unpaid: <strong>Liability ↑</strong> (Salary Payable +₹25,000) + <strong>Expense ↑</strong>. Three elements — the most complex transaction!",
+      journal:"Dr Rent ₹30,000, Dr Utilities ₹8,000, Dr Salary Expense ₹25,000 &nbsp;/&nbsp; Cr Bank ₹38,000, Cr Salary Payable ₹25,000" },
+    { no:13, date:"Jun 1",  month:"June 2026",
+      desc:"Financial planning services are provided to multiple clients — ₹2,50,000 is earned and received in cash on the same day.",
+      correct:["Assets","Income"],
+      expl:"Cash received — <strong>Asset ↑</strong>. Revenue earned — <strong>Income ↑</strong>. Same pattern as May 20 advisory services, but a much larger amount.",
+      journal:"Dr Bank ₹2,50,000 &nbsp;/&nbsp; Cr Service Revenue ₹2,50,000" },
+    { no:14, date:"Jun 15", month:"June 2026",
+      desc:"The first advisory service in Rebecca Olsen's prepaid package is completed. ₹50,000 (= ₹2,00,000 ÷ 4) of the deferred revenue is now earned.",
+      correct:["Liabilities","Income"],
+      expl:"Deferred Revenue liability reduces (Liability ↓) as the obligation is fulfilled. Revenue is now earned — <strong>Income ↑</strong>. No cash changes — cash came in May. This converts a <em>liability into income</em>.",
+      journal:"Dr Deferred Revenue ₹50,000 &nbsp;/&nbsp; Cr Service Revenue ₹50,000" },
+    { no:15, date:"Jun 20", month:"June 2026",
+      desc:"WealthAdvisors pays ₹1,50,000 to the equipment supplier — settling the credit purchase made in May.",
+      correct:["Assets","Liabilities"],
+      expl:"Bank reduces — <strong>Asset ↓</strong>. Equipment payable settled — <strong>Liability ↓</strong>. Both sides decrease equally: A↓ = L↓ + E. The reverse of taking credit.",
+      journal:"Dr Equipment Payable ₹1,50,000 &nbsp;/&nbsp; Cr Bank ₹1,50,000" },
+    { no:16, date:"Jun 25", month:"June 2026",
+      desc:"Monthly interest on the bank loan is paid — ₹2,000 (₹3,00,000 × 8% p.a. ÷ 12 months).",
+      correct:["Assets","Expenses"],
+      expl:"Cash paid — <strong>Asset ↓</strong>. Interest is a finance cost — <strong>Expense ↑</strong>. Cost of borrowing, recognised in the period it accrues.",
+      journal:"Dr Interest Expense ₹2,000 &nbsp;/&nbsp; Cr Bank ₹2,000" },
+    { no:17, date:"Jun 30", month:"June 2026",
+      desc:"All June payments settled in one go: Rent ₹30,000 + Utilities ₹12,000 + Salary ₹50,000 (May arrears ₹25,000 + June ₹25,000) + Supplies Payable ₹30,000. Total bank outflow: ₹1,22,000.",
+      correct:["Assets","Liabilities","Expenses"],
+      expl:"Bank reduces for all outflows — <strong>Asset ↓</strong> (−₹1,22,000). May Salary Payable and Supplies Payable settled — <strong>Liability ↓</strong>. June rent, utilities and June salary are current period costs — <strong>Expense ↑</strong>. Three elements again!",
+      journal:"Dr Rent ₹30,000, Dr Utilities ₹12,000, Dr Salary Expense ₹25,000, Dr Salary Payable ₹25,000, Dr Supplies Payable ₹30,000 &nbsp;/&nbsp; Cr Bank ₹1,22,000" }
+  ];
+
+  const ELEMENTS = [
+    { key:"Assets",      icon:"🏦" },
+    { key:"Liabilities", icon:"📋" },
+    { key:"Equity",      icon:"💰" },
+    { key:"Income",      icon:"📈" },
+    { key:"Expenses",    icon:"💸" }
+  ];
+
+  /* ─── GAME STATE ────────────────────────────────────────── */
+  var gState = {};
+
+  function startGame() {
+    gState = {
+      current: 0,
+      selected: [],
+      scores: [],
+      elStats: {}
+    };
+    ELEMENTS.forEach(function(e) {
+      gState.elStats[e.key] = { tp:0, fp:0, fn:0, tn:0 };
+    });
+    document.getElementById('game-start').style.display = 'none';
+    document.getElementById('game-play').style.display = 'block';
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function renderQuestion() {
+    var q = GT[gState.current];
+    gState.selected = [];
+
+    document.getElementById('g-qnum').textContent = 'Q ' + q.no + ' / ' + GT.length;
+    document.getElementById('g-month').textContent = q.month;
+    document.getElementById('g-date').textContent = q.date;
+    document.getElementById('g-desc').textContent = q.desc;
+
+    var pct = (gState.current / GT.length) * 100;
+    document.getElementById('g-progress').style.width = pct + '%';
+
+    var done = gState.scores.length;
+    var perfect = gState.scores.filter(function(s){ return s.perfect; }).length;
+    document.getElementById('g-score').textContent = done > 0 ? perfect + ' / ' + done : '— / —';
+
+    var container = document.getElementById('g-elements');
+    container.innerHTML = '';
+    ELEMENTS.forEach(function(el) {
+      var btn = document.createElement('button');
+      btn.className = 'g-el-btn';
+      btn.id = 'gbtn-' + el.key;
+      btn.setAttribute('onclick', "toggleEl('" + el.key + "')");
+      btn.innerHTML = '<span class="el-icon">' + el.icon + '</span><span class="el-name">' + el.key + '</span>';
+      container.appendChild(btn);
+    });
+
+    document.getElementById('g-submit').style.display = 'inline-block';
+    document.getElementById('g-next').style.display   = 'none';
+    document.getElementById('g-feedback').style.display = 'none';
+    document.getElementById('g-feedback').innerHTML = '';
+  }
+
+  function toggleEl(key) {
+    if (document.getElementById('g-next').style.display !== 'none') return;
+    var btn = document.getElementById('gbtn-' + key);
+    var idx = gState.selected.indexOf(key);
+    if (idx === -1) {
+      gState.selected.push(key);
+      btn.classList.add('selected');
+    } else {
+      gState.selected.splice(idx, 1);
+      btn.classList.remove('selected');
+    }
+  }
+
+  function submitAnswer() {
+    var q = GT[gState.current];
+    var correct  = q.correct;
+    var selected = gState.selected;
+
+    var tp = correct.filter(function(e){ return selected.indexOf(e) !== -1; }).length;
+    var fp = selected.filter(function(e){ return correct.indexOf(e) === -1; }).length;
+    var fn = correct.filter(function(e){ return selected.indexOf(e) === -1; }).length;
+    var union = tp + fp + fn;
+    var jaccard = union === 0 ? 1 : tp / union;
+    var perfect = (tp === correct.length && fp === 0);
+
+    // update per-element stats
+    ELEMENTS.forEach(function(el) {
+      var inC = correct.indexOf(el.key) !== -1;
+      var inS = selected.indexOf(el.key) !== -1;
+      var st  = gState.elStats[el.key];
+      if (inC && inS)   st.tp++;
+      else if (inC)     st.fn++;
+      else if (inS)     st.fp++;
+      else              st.tn++;
+    });
+
+    gState.scores.push({ perfect: perfect, jaccard: jaccard, tp:tp, fp:fp, fn:fn,
+                         correct: correct.slice(), selected: selected.slice() });
+
+    // colour the buttons
+    ELEMENTS.forEach(function(el) {
+      var btn = document.getElementById('gbtn-' + el.key);
+      btn.removeAttribute('onclick');
+      var inC = correct.indexOf(el.key) !== -1;
+      var inS = selected.indexOf(el.key) !== -1;
+      if (inC && inS)   { btn.className = 'g-el-btn correct'; btn.innerHTML += '<span style="font-size:0.85rem;display:block;margin-top:2px;">✓</span>'; }
+      else if (!inC && inS) { btn.className = 'g-el-btn wrong';   btn.innerHTML += '<span style="font-size:0.85rem;display:block;margin-top:2px;">✗</span>'; }
+      else if (inC && !inS) { btn.className = 'g-el-btn missed';  btn.innerHTML += '<span style="font-size:0.65rem;display:block;margin-top:2px;font-weight:700;">MISSED</span>'; }
+      else                  { btn.className = 'g-el-btn neutral'; }
+    });
+
+    // feedback
+    var fbClass = perfect ? 'g-fb-perfect' : (jaccard >= 0.34 ? 'g-fb-partial' : 'g-fb-wrong');
+    var emoji   = perfect ? '🎯' : (jaccard >= 0.34 ? '⚡' : '❌');
+    var heading = perfect ? 'Perfect!' : (jaccard >= 0.34 ? 'Partially Correct' : 'Incorrect');
+    var scoreLabel = perfect ? '<span style="color:#15803D;font-weight:700;">+1 point</span>' :
+                               '<span style="color:#DC2626;font-weight:700;">No point</span>';
+
+    var legendHtml = '<div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.6rem;font-size:0.75rem;">'
+      + '<span style="padding:0.15rem 0.5rem;background:#f0fdf4;border-radius:4px;color:#15803D;font-weight:600;">✓ Correct selection</span>'
+      + '<span style="padding:0.15rem 0.5rem;background:#fef2f2;border-radius:4px;color:#DC2626;font-weight:600;">✗ Wrong selection</span>'
+      + '<span style="padding:0.15rem 0.5rem;background:#fff7ed;border-radius:4px;color:#C2410C;font-weight:600;">MISSED Required</span>'
+      + '</div>';
+
+    var fb = document.getElementById('g-feedback');
+    fb.style.display = 'block';
+    fb.innerHTML = '<div class="g-feedback-box ' + fbClass + '">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">'
+      + '<strong style="font-size:1rem;">' + emoji + ' ' + heading + '</strong>'
+      + '<span style="font-size:0.82rem;">Correct: <strong>' + correct.join(' + ') + '</strong> &nbsp;|&nbsp; ' + scoreLabel + '</span>'
+      + '</div>'
+      + '<p style="font-size:0.875rem;line-height:1.65;margin-bottom:0.75rem;">' + q.expl + '</p>'
+      + '<div style="background:rgba(0,0,0,0.04);border-radius:var(--radius);padding:0.65rem 0.85rem;font-size:0.8rem;margin-bottom:0.5rem;">'
+      + '<strong>Journal Entry:</strong><br><span style="font-family:monospace;">' + q.journal + '</span>'
+      + '</div>'
+      + legendHtml
+      + '</div>';
+
+    document.getElementById('g-submit').style.display = 'none';
+    var isLast = gState.current >= GT.length - 1;
+    var nextBtn = document.getElementById('g-next');
+    nextBtn.textContent = isLast ? 'View My Results 🏆' : 'Next Transaction →';
+    nextBtn.style.display = 'inline-block';
+
+    fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function nextQuestion() {
+    gState.current++;
+    if (gState.current >= GT.length) {
+      showResults();
+    } else {
+      document.getElementById('game-play').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(renderQuestion, 300);
+    }
+  }
+
+  function showResults() {
+    document.getElementById('game-play').style.display   = 'none';
+    var res = document.getElementById('game-results');
+    res.style.display = 'block';
+
+    var scores  = gState.scores;
+    var perfect = scores.filter(function(s){ return s.perfect; }).length;
+    var pct     = Math.round((perfect / GT.length) * 100);
+    var avgJ    = Math.round(scores.reduce(function(a,s){ return a + s.jaccard; }, 0) / GT.length * 100);
+
+    var grade, gc, msg;
+    if (pct >= 80)      { grade='A'; gc='#15803D'; msg='Outstanding! You have a strong command of how transactions flow through the five financial elements.'; }
+    else if (pct >= 60) { grade='B'; gc='#0E5F8A'; msg='Good work! A few tricky transactions caught you. Review the missed ones and try again.'; }
+    else if (pct >= 40) { grade='C'; gc='#D97706'; msg='Fair attempt. Focus on asset swaps, deferred revenue, and accrual entries — those are the common pitfalls.'; }
+    else                { grade='D'; gc='#DC2626'; msg='Keep going! Revisit the accounting equation and the five elements in the Framework tab, then try again.'; }
+
+    // element accuracy rows
+    var elHtml = ELEMENTS.map(function(el) {
+      var s  = gState.elStats[el.key];
+      var sensitivity = (s.tp + s.fn) > 0 ? Math.round(s.tp / (s.tp + s.fn) * 100) : 100;
+      var fp_rate     = (s.fp + s.tn) > 0 ? Math.round(s.fp / (s.fp + s.tn) * 100) : 0;
+      var bc = sensitivity >= 75 ? '#16A34A' : sensitivity >= 50 ? '#D97706' : '#DC2626';
+      var label = sensitivity >= 75 ? 'Strong' : sensitivity >= 50 ? 'Fair' : 'Needs Work';
+      return '<div style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 0;border-bottom:1px solid var(--gray-100);">'
+        + '<span style="font-size:1.15rem;width:26px;text-align:center;">' + el.icon + '</span>'
+        + '<span style="font-size:0.85rem;font-weight:600;min-width:88px;color:var(--maroon-dark);">' + el.key + '</span>'
+        + '<div class="g-stat-bar-wrap"><div class="g-stat-bar" style="background:' + bc + ';width:' + sensitivity + '%;"></div></div>'
+        + '<span style="font-size:0.82rem;font-weight:700;min-width:38px;text-align:right;color:' + bc + ';">' + sensitivity + '%</span>'
+        + '<span style="font-size:0.72rem;color:var(--gray-500);min-width:60px;">' + s.tp + '/' + (s.tp+s.fn) + ' found</span>'
+        + '<span style="font-size:0.72rem;padding:0.1rem 0.45rem;background:' + (sensitivity>=75?'#f0fdf4':sensitivity>=50?'#fff7ed':'#fef2f2') + ';border-radius:100px;color:' + bc + ';font-weight:600;">' + label + '</span>'
+        + '</div>';
+    }).join('');
+
+    // false-positive callout
+    var fpHtml = ELEMENTS.map(function(el) {
+      var s = gState.elStats[el.key];
+      return s.fp > 0 ? '<span class="tag tag-maroon" style="font-size:0.72rem;">' + el.icon + ' ' + el.key + ' (' + s.fp + 'x)</span>' : '';
+    }).join(' ');
+
+    // Q-by-Q table
+    var qRows = scores.map(function(s, i) {
+      var q    = GT[i];
+      var icon = s.perfect ? '✅' : (s.jaccard >= 0.34 ? '⚡' : '❌');
+      var selColor = s.fp > 0 ? '#DC2626' : (s.fn > 0 ? '#D97706' : 'var(--gray-700)');
+      return '<tr style="background:' + (i%2===0?'white':'var(--off-white)') + ';">'
+        + '<td style="padding:0.45rem 0.75rem;font-size:0.78rem;color:var(--gray-500);white-space:nowrap;">' + q.date + '</td>'
+        + '<td style="padding:0.45rem 0.75rem;font-size:0.78rem;">' + q.correct.join(', ') + '</td>'
+        + '<td style="padding:0.45rem 0.75rem;font-size:0.78rem;color:' + selColor + ';">' + (s.selected.length ? s.selected.join(', ') : '<em style="color:var(--gray-500);">nothing selected</em>') + '</td>'
+        + '<td style="padding:0.45rem 0.75rem;text-align:center;font-size:1rem;">' + icon + '</td>'
+        + '</tr>';
+    }).join('');
+
+    res.innerHTML =
+      // Score hero
+      '<div style="text-align:center;margin-bottom:2rem;padding:2.5rem 1.5rem;background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--gray-200);">'
+      + '<div style="font-size:0.82rem;color:var(--gray-500);margin-bottom:0.35rem;text-transform:uppercase;letter-spacing:0.08em;">Your Final Score</div>'
+      + '<div style="font-size:4.5rem;font-weight:800;color:var(--maroon-dark);line-height:1.05;">' + pct + '<span style="font-size:2rem;">%</span></div>'
+      + '<div style="font-size:0.9rem;color:var(--gray-500);margin-bottom:1rem;">' + perfect + ' of ' + GT.length + ' perfect answers</div>'
+      + '<div style="display:inline-flex;align-items:center;justify-content:center;background:' + gc + ';color:white;font-size:1.3rem;font-weight:800;width:58px;height:58px;border-radius:50%;margin-bottom:0.85rem;">'+grade+'</div>'
+      + '<p style="color:var(--gray-700);max-width:460px;margin:0 auto;font-size:0.9rem;line-height:1.6;">' + msg + '</p>'
+      + '</div>'
+
+      // Stats cards
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1.5rem;">'
+      + '<div style="background:white;border-radius:var(--radius-lg);padding:1.25rem;box-shadow:var(--shadow-sm);border:1px solid var(--gray-200);text-align:center;border-top:4px solid #16A34A;"><div style="font-size:2.2rem;font-weight:800;color:var(--maroon);">' + perfect + '</div><div style="font-size:0.78rem;color:var(--gray-500);">Perfect Answers</div></div>'
+      + '<div style="background:white;border-radius:var(--radius-lg);padding:1.25rem;box-shadow:var(--shadow-sm);border:1px solid var(--gray-200);text-align:center;border-top:4px solid #DC2626;"><div style="font-size:2.2rem;font-weight:800;color:var(--maroon);">' + (GT.length - perfect) + '</div><div style="font-size:0.78rem;color:var(--gray-500);">Needs Review</div></div>'
+      + '<div style="background:white;border-radius:var(--radius-lg);padding:1.25rem;box-shadow:var(--shadow-sm);border:1px solid var(--gray-200);text-align:center;border-top:4px solid var(--gold);"><div style="font-size:2.2rem;font-weight:800;color:var(--maroon);">' + avgJ + '%</div><div style="font-size:0.78rem;color:var(--gray-500);">Element Accuracy</div></div>'
+      + '</div>'
+
+      // Element accuracy
+      + '<div style="background:white;border-radius:var(--radius-lg);padding:1.5rem;box-shadow:var(--shadow-sm);border:1px solid var(--gray-200);margin-bottom:1.5rem;">'
+      + '<h3 style="color:var(--maroon-dark);font-size:1rem;margin-bottom:0.35rem;">Element Identification Accuracy</h3>'
+      + '<p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:1rem;">How often did you correctly spot each element when it was actually affected?</p>'
+      + elHtml
+      + (fpHtml.trim() ? '<div style="margin-top:1rem;padding:0.75rem;background:var(--gray-100);border-radius:var(--radius);font-size:0.8rem;"><strong style="color:var(--gray-700);">⚠️ False positives (wrongly selected):</strong><br><div style="margin-top:0.4rem;display:flex;flex-wrap:wrap;gap:0.4rem;">' + fpHtml + '</div></div>' : '')
+      + '</div>'
+
+      // Q-by-Q table
+      + '<div style="background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);border:1px solid var(--gray-200);margin-bottom:2rem;overflow:hidden;">'
+      + '<div style="background:var(--maroon);color:white;padding:0.85rem 1.25rem;font-weight:700;font-size:0.9rem;">Transaction-by-Transaction Breakdown</div>'
+      + '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;">'
+      + '<thead><tr style="background:var(--gray-100);">'
+      + '<th style="padding:0.5rem 0.75rem;text-align:left;font-size:0.78rem;color:var(--gray-700);">Date</th>'
+      + '<th style="padding:0.5rem 0.75rem;text-align:left;font-size:0.78rem;color:var(--gray-700);">Correct Elements</th>'
+      + '<th style="padding:0.5rem 0.75rem;text-align:left;font-size:0.78rem;color:var(--gray-700);">Your Answer</th>'
+      + '<th style="padding:0.5rem 0.75rem;text-align:center;font-size:0.78rem;color:var(--gray-700);">Result</th>'
+      + '</tr></thead><tbody>' + qRows + '</tbody></table></div>'
+      + '</div>'
+
+      // Action buttons
+      + '<div style="text-align:center;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;">'
+      + '<button onclick="restartGame()" class="btn-primary">🔄 Try Again</button>'
+      + '<button onclick="showPage(\'casestudy\')" class="btn-outline">📊 Review Case Study</button>'
+      + '</div>';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function restartGame() {
+    document.getElementById('game-results').style.display = 'none';
+    document.getElementById('game-results').innerHTML = '';
+    document.getElementById('game-start').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  </script>
 
   <footer>
     <div class="footer-inner">
-      <h4>Prof. Sarath Babu</h4>
+      <h4>Dr. A. Sarath Babu</h4>
+      <p>Associate Professor of Finance &amp; Accounting</p>
       <p>Institute of Management Technology, Hyderabad</p>
       <p style="margin-top:0.25rem;"><span class="gold-text">MOP-IFA</span> &nbsp;·&nbsp; Introduction to Financial Accounting</p>
       <hr />
       <p class="footer-bottom">© 2026 IMT Hyderabad. Course material for academic use only.</p>
     </div>
   </footer>
+
+  <script>
+    function showPage(id) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Deactivate all nav items
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      // Show target page
+      document.getElementById('page-' + id).classList.add('active');
+      // Activate nav item
+      var navEl = document.getElementById('nav-' + id);
+      if (navEl) navEl.classList.add('active');
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchMonth(month) {
+      // Only affect the transactions section buttons/panels
+      var txnSection = document.getElementById('panel-' + month).closest('section');
+      txnSection.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+      txnSection.querySelectorAll('.month-panel').forEach(p => p.classList.remove('active'));
+      txnSection.querySelector('[onclick="switchMonth(\'' + month + '\')"]').classList.add('active');
+      document.getElementById('panel-' + month).classList.add('active');
+    }
+
+    function switchFS(month) {
+      var fsSection = document.getElementById('fs-' + month).closest('section');
+      fsSection.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+      fsSection.querySelectorAll('.month-panel').forEach(p => p.classList.remove('active'));
+      fsSection.querySelector('[onclick="switchFS(\'' + month + '\')"]').classList.add('active');
+      document.getElementById('fs-' + month).classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
